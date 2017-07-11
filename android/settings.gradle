@@ -1,0 +1,3 @@
+rootProject.name = 'dengue_stop'
+
+include ':app'
