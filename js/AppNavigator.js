@@ -44,9 +44,9 @@ class AppNavigator extends Component {
     return (
       <Router createReducer={reducerCreate}>
         <Scene key="root">
-          <Scene key="launch" component={Launch} initial/>
-          <Scene key="login" component={Login} title="Login"/>
-          <Scene key="home" component={Home} title="Home"/>
+          <Scene key="launch" component={Launch}/>
+          <Scene key="login" component={Login} initial hideNavBar/>
+          <Scene key="home" component={Home} title="Home" hideNavBar/>
         </Scene>
       </Router>
     );
