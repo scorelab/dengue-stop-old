@@ -1,11 +1,24 @@
 {
 	"name": "dengue_stop",
 	"version": "0.0.1",
+	"description": "Dengue-Stop provides a simple and effective way to report and discover dengue incidents around your area, with the help of community.",
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
+        "repository": {
+		"type": "git",
+		"url": "https://github.com/scorelab/dengue-stop.git"
+	},
+        "keywords": ["dengue", "disease", "report"],
+        "author": "SCoRe Lab",
+        "license": "Apache License 2.0.",
+        "contributors": ["https://github.com/dinithminura", "https://github.com/agentmilindu", "https://github.com/charithccmc"],
+        "bugs": {
+		"url": "https://github.com/scorelab/dengue-stop/issues"
+	},
+        "homepage": "https://github.com/scorelab/dengue-stop",
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.46.1",
