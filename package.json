@@ -12,7 +12,7 @@
 		"url": "https://github.com/scorelab/dengue-stop.git"
 	},
         "keywords": ["dengue", "disease", "report"],
-        "author": "https://github.com/dinithminura",
+        "author": "SCoRe Lab",
         "license": "Apache License 2.0.",
         "contributors": ["https://github.com/dinithminura", "https://github.com/agentmilindu", "https://github.com/charithccmc"],
         "bugs": {
