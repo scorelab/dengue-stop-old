@@ -41,7 +41,7 @@ class Home extends React.Component {
           </Text>
         </View>
         <View style={styles.headerLogo}>
-          <Text>heder logo
+          <Text>Header Logo
           </Text>
         </View>
         <View style={styles.menuCol}>
