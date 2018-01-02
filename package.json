@@ -23,8 +23,8 @@
 		"Dengue-Stop"
 	],
 	"licenses":   [
-		{ "type": "GPL-3.0",
-		 "url": "https://www.gnu.org/licenses/gpl-3.0.en.html"
+		{ "type": "Apache 2.0",
+		 "url": "http://www.apache.org/licenses/LICENSE-2.0"
 		}
 	],
 	"homepage": "https://github.com/scorelab/dengue-stop/",
