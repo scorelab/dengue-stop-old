@@ -1,7 +1,37 @@
 {
 	"name": "dengue_stop",
 	"version": "0.0.1",
+	"description": "Report and discover dengue incidents around your area, with the help of community",
+	"bugs": "https://github.com/scorelab/dengue-stop/issues",
+	"author": "SCoRe Community",
+	"contributors": [
+		"agentmilindu",
+		"dinithminura",
+		"padamchopra",
+		"raghavpuri",
+		"kmehant",
+		"Kalyan3578",
+		"iammosespaulr",
+		"AdhyanDhull",
+		"revanthgundam"
+	],
+	 "repository": { 
+		 "type": ["git"],
+		 "url": "https://github.com/scorelab/dengue-stop.git"
+	 },
+	"keywords": [
+		"Dengue-Stop"
+	],
+	"licenses":   [
+		{ "type": "Apache 2.0",
+		 "url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	],
+	"homepage": "https://github.com/scorelab/dengue-stop/",
 	"private": true,
+	"engines": {
+		"node": ">=6.10.x"
+	},
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
