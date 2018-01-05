@@ -2,6 +2,15 @@
 	"name": "dengue_stop",
 	"version": "0.0.1",
 	"private": true,
+	"description":"abc",
+	"keywords":["npm","nodejs","android","react-native","dengue"],
+	"bugs":"https://github.com/scorelab/dengue-stop/issues",
+  	"license": "Apache 2.0",
+	"repository":"https://github.com/scorelab/dengue-stop",
+	"homepage":"http://www.scorelab.org/",
+  	"engines":{} ,
+ 	"contributors":["agentmilindu","hasa93","rhperera","malithsen","charithccmc","shlokj"],
+	"author":"SCoRe Community",
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
