@@ -9,6 +9,7 @@
 	"dependencies": {
 		"i18next": "^10.5.0",
 		"react": "16.0.0-alpha.12",
+		"react-i18next": "^7.5.0",
 		"react-native": "0.46.1",
 		"react-native-firebase": "^2.0.3",
 		"react-native-navigation-redux-helpers": "^0.5.0",

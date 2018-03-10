@@ -16,6 +16,7 @@ import {
   Reducer,
   ActionConst,
 } from 'react-native-router-flux';
+import { I18nextProvider } from 'react-i18next';
 
 import i18n from './i18n/i18nConfig';
 
@@ -41,7 +42,7 @@ const reducerCreate = params => {
 };
 
 class AppNavigator extends Component {
-  
+
   // point to this function when ever a language change is triggered
   changeI18nLanguage(language) {
     return new Promise((resolve, reject) => {
@@ -57,13 +58,15 @@ class AppNavigator extends Component {
 
   render() {
     return (
-      <Router createReducer={reducerCreate}>
-        <Scene key="root">
-          <Scene key="launch" component={Launch} />
-          <Scene key="login" component={Login} initial hideNavBar />
-          <Scene key="home" component={Home} title="Home" hideNavBar />
-        </Scene>
-      </Router>
+      <I18nextProvider i18n={i18n}>
+        <Router createReducer={reducerCreate}>
+          <Scene key="root">
+            <Scene key="launch" component={Launch} />
+            <Scene key="login" component={Login} initial hideNavBar />
+            <Scene key="home" component={Home} title="Home" hideNavBar />
+          </Scene>
+        </Router>
+      </I18nextProvider>
     );
   }
 }
