@@ -4,7 +4,7 @@ import siTranslations from './locales/si-LK/translations.json';
 import taTranslations from './locales/ta-LK/translations.json';
 
 const instance = i18next.init({
-  fallbackLng: 'si-LK',
+  fallbackLng: 'en',
   ns: ['translations'],
   defaultNS: 'translations',
   whitelist: ['en', 'si-LK', 'ta-LK'],
