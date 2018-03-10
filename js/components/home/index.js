@@ -1,12 +1,20 @@
 import React from 'react';
-import {View, Text, StyleSheet} from "react-native";
-import {Actions} from "react-native-router-flux";
+import { View, Text, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
 import styles from './styles';
+import { updateTotalCases } from '../../actions/homeActions';
 import theme from '../../themes/dengue_stop';
 const loginLogo = require('../../../imgs/test_logo.jpg');
 
 class Home extends React.Component {
-  render(){
+
+  componentDidMount() {
+    setTimeout(() => this.props.updateTotalCases(1000), 10000);
+  }
+
+  render() {
     return (
       <View style={styles.fixedFullPage}>
         <View style={styles.leftSideBackGround}>
@@ -18,17 +26,17 @@ class Home extends React.Component {
             </Text>
             <Text style={styles.mainFont}>REPORTED CASES
             </Text>
-            <Text style={[styles.mainFont,{color:'#95989a', marginBottom:10}]}>67,456
+            <Text style={[styles.mainFont, { color: '#95989a', marginBottom: 10 }]}>{this.props.home.totalCases}
             </Text>
 
             <Text style={styles.mainFont}>LAST WEEK
             </Text>
-            <Text style={[styles.mainFont,{color:'#95989a',marginBottom:10}]}>345
+            <Text style={[styles.mainFont, { color: '#95989a', marginBottom: 10 }]}>345
             </Text>
 
             <Text style={styles.mainFont}>LAST 24 HRS
             </Text>
-            <Text style={[styles.mainFont,{color:'#95989a'}]}>20
+            <Text style={[styles.mainFont, { color: '#95989a' }]}>20
             </Text>
 
           </View>
@@ -37,7 +45,7 @@ class Home extends React.Component {
 
         </View>
         <View style={styles.headerRow}>
-          <Text style={{color:'#ffffff', fontSize:24, fontStyle:'italic'}}>our lives, our fight...
+          <Text style={{ color: '#ffffff', fontSize: 24, fontStyle: 'italic' }}>our lives, our fight...
           </Text>
         </View>
         <View style={styles.headerLogo}>
@@ -54,8 +62,8 @@ class Home extends React.Component {
             </View>
           </View>
           <View style={styles.menuItem}>
-            <View style={[styles.menuItemOuterColor,{backgroundColor:'#9e0404'}]}>
-              <View style={[styles.menuItemInnerColor,{backgroundColor:'#910000'}]}>
+            <View style={[styles.menuItemOuterColor, { backgroundColor: '#9e0404' }]}>
+              <View style={[styles.menuItemInnerColor, { backgroundColor: '#910000' }]}>
                 <Text>menu 1
                 </Text>
               </View>
@@ -71,8 +79,8 @@ class Home extends React.Component {
             </View>
           </View>
           <View style={styles.menuItem}>
-            <View style={[styles.menuItemOuterColor,{backgroundColor:'#ef7400'}]}>
-              <View style={[styles.menuItemInnerColor,{backgroundColor:'#ed5e00'}]}>
+            <View style={[styles.menuItemOuterColor, { backgroundColor: '#ef7400' }]}>
+              <View style={[styles.menuItemInnerColor, { backgroundColor: '#ed5e00' }]}>
                 <Text>menu 2
                 </Text>
               </View>
@@ -88,8 +96,8 @@ class Home extends React.Component {
             </View>
           </View>
           <View style={styles.menuItem}>
-            <View style={[styles.menuItemOuterColor,{backgroundColor:'#025199'}]}>
-              <View style={[styles.menuItemInnerColor,{backgroundColor:'#006691'}]}>
+            <View style={[styles.menuItemOuterColor, { backgroundColor: '#025199' }]}>
+              <View style={[styles.menuItemInnerColor, { backgroundColor: '#006691' }]}>
                 <Text>menu 3
                 </Text>
               </View>
@@ -103,4 +111,16 @@ class Home extends React.Component {
   }
 }
 
-module.exports = Home;
+const mapStateToProps = (state) => {
+  return {
+    home: state.home
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateTotalCases: count => dispatch(updateTotalCases(count)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

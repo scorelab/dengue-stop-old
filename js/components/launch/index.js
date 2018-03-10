@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, Text, StyleSheet} from "react-native";
-import {Actions} from "react-native-router-flux";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from "react-native";
+import { Actions } from "react-native-router-flux";
 
 var styles = StyleSheet.create({
     container: {
@@ -11,14 +11,14 @@ var styles = StyleSheet.create({
     },
 });
 
-class Launch extends React.Component {
-    render(){
+class Launch extends Component {
+    render() {
         return (
             <View style={styles.container}>
-                <Text onPress={()=>Actions.login()}>Launch page</Text>
+                <Text onPress={() => Actions.login()}>Launch page</Text>
             </View>
         );
     }
 }
 
-module.exports = Launch;
+export default Launch;

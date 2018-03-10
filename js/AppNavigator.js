@@ -14,9 +14,10 @@ import {
   Router,
   Actions,
   Reducer,
-  ActionConst,
 } from 'react-native-router-flux';
+import { Provider, connect } from 'react-redux';
 
+import configureStore from './store/configureStore';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,16 +40,21 @@ const reducerCreate = params => {
   };
 };
 
+export const store = configureStore();
+const ConnectedRouter = connect()(Router);
+
 class AppNavigator extends Component {
   render() {
     return (
-      <Router createReducer={reducerCreate}>
-        <Scene key="root">
-          <Scene key="launch" component={Launch}/>
-          <Scene key="login" component={Login} initial hideNavBar/>
-          <Scene key="home" component={Home} title="Home" hideNavBar/>
-        </Scene>
-      </Router>
+      <Provider store={store}>
+        <ConnectedRouter createReducer={reducerCreate}>
+          <Scene key="root">
+            <Scene key="launch" component={Launch} />
+            <Scene key="login" component={Login} initial hideNavBar />
+            <Scene key="home" component={Home} title="Home" hideNavBar />
+          </Scene>
+        </ConnectedRouter>
+      </Provider>
     );
   }
 }

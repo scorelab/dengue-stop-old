@@ -1,11 +1,11 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
-import {Actions} from "react-native-router-flux";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { Actions } from "react-native-router-flux";
 import styles from './styles';
 import theme from '../../themes/dengue_stop';
 
 const loginLogo = require('../../../imgs/test_logo.jpg');
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,29 +20,29 @@ class Login extends React.Component {
     }),
   }
 
-  render(){
+  render() {
     return (
       <View style={theme.fixedFullPage}>
 
         <View>
-          <Image  style={styles.logo} source={loginLogo}/>
+          <Image style={styles.logo} source={loginLogo} />
         </View>
         <View style={styles.content}>
 
-          <TouchableOpacity style={styles.loginButtonFacebook} onPress={()=>console.warn('facebook')}>
+          <TouchableOpacity style={styles.loginButtonFacebook} onPress={() => console.warn('facebook')}>
             <Text style={styles.buttonText}>Connect with Facebook</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.loginButtonGoogle} onPress={()=>console.warn('google')}>
+          <TouchableOpacity style={styles.loginButtonGoogle} onPress={() => console.warn('google')}>
             <Text style={styles.buttonText}>Connect with Google</Text>
           </TouchableOpacity>
 
-          <Text onPress={()=>Actions.home()} style={{marginTop:50}}>
+          <Text onPress={() => Actions.home()} style={{ marginTop: 50 }}>
             Skip to homepage for testing
           </Text>
         </View>
-        </View>
+      </View>
     );
   }
 }
 
-module.exports = Login;
+export default Login;
