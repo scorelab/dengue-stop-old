@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
 import {Actions} from "react-native-router-flux";
 import styles from './styles';
 import theme from '../../themes/dengue_stop';
-
+import { f, database , auth } from '../../../config/config.js';
 const loginLogo = require('../../../imgs/test_logo.jpg');
 class Login extends React.Component {
   constructor(props) {
