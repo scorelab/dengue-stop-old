@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from "react-native";
 import {Actions} from "react-native-router-flux";
 import styles from './styles';
 import theme from '../../themes/dengue_stop';
+import { f, database , auth } from '../../../config/config.js';
 const loginLogo = require('../../../imgs/test_logo.jpg');
 
 class Home extends React.Component {

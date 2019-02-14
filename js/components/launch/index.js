@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from "react-native";
 import {Actions} from "react-native-router-flux";
-
+import { f, database , auth } from '../../../config/config.js';
 var styles = StyleSheet.create({
     container: {
         flex: 1,
