@@ -8,9 +8,6 @@ const loginLogo = require('../../../imgs/test_logo.jpg');
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
   }
 
   static propTypes = {
