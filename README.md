@@ -20,6 +20,10 @@ Dengue-Stop provides a simple and effective way to report and discover dengue in
     
 5. Wait for a few minutes and the app should start on your device (android phone or emulator)
 
+Note: 
+If you get an error from _typed-buffer saying "Wrong Length! at ValidateArryBufferArgumants" then open up node_modules/core-js/modules/_typed-buffer.js and comment line 157. (For Temporary Development purposes only)
+
+
 
 # License
 
