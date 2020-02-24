@@ -1,7 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
-export default function Login(){
+export default function Login({ navigation }){
+
+    const pressHandler = () => {
+      navigation.navigate('Home');
+    }
+    const navigationOptions = {
+      header: null
+  }
+
     return (
 
       <View style={styles.container}>
@@ -37,7 +45,7 @@ export default function Login(){
         <View>
           <TouchableOpacity
           //this.props.navigation.navigate('Login')
-            onPress={() =>alert('Hi')}
+            onPress={pressHandler}
             style={{ backgroundColor: 'transparent',borderRadius: 10, marginTop:10, width: 280}}
           >
             <Text style={{marginTop: 40, textAlign: 'center'}}>Skip to HomePage &rarr;</Text>
