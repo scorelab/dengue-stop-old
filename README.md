@@ -21,7 +21,7 @@ Dengue-Stop provides a simple and effective way to report and discover dengue in
 5. Wait for a few minutes and the app should start on your device (android phone or emulator)
 
 
-#Screenshots
+# Screenshots
 <table border="0">
 <tr>
 	<td><img src="https://i.imgur.com/w4Khf3X.gif"></td>
