@@ -1,7 +1,41 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 
-export default function Home () {
+export default class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true };
+  }
+
+  componentDidMount(){
+    return fetch('https://raw.githubusercontent.com/Suvink/dengue-stop/master/data.json')
+      .then(response => response.json())
+      .then (responseJson => {
+        console.log(responseJson);
+        this.setState(
+         {
+          isLoading: false,
+          dataSource: responseJson
+         },
+         function(){}
+        );
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
+
+
+
+render(){
+  if (this.state.isLoading) {
+    return (
+      <View style={{ flex: 1, padding: 20, alignContent: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator animating={true} color={'orange'} size={'large'} />
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -22,13 +56,13 @@ export default function Home () {
         <View>
           <View style={styles.column}>
             <View style={styles.item}>
-              <Text style={styles.overview_details}>65435</Text>
+              <Text style={styles.overview_details}>{this.state.dataSource.tot_cases}</Text>
             </View>
             <View style={styles.item}>
-              <Text style={styles.overview_details}>345</Text>
+              <Text style={styles.overview_details}>{this.state.dataSource.last_week}</Text>
             </View>
             <View style={styles.item}>
-              <Text style={styles.overview_details}>20</Text>
+              <Text style={styles.overview_details}>{this.state.dataSource.last_24hrs}</Text>
             </View>
           </View>
         </View>
@@ -155,6 +189,7 @@ export default function Home () {
       </View>
     </View>
   )
+                }
 }
 
 const styles = StyleSheet.create({

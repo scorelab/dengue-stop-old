@@ -6,9 +6,6 @@ export default function Login({ navigation }){
     const pressHandler = () => {
       navigation.navigate('Home');
     }
-    const navigationOptions = {
-      header: null
-  }
 
     return (
 
