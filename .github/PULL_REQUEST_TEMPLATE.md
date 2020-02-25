@@ -7,3 +7,4 @@
 Check if you have done the following before creating the PR
 - [ ] console logs have been deleted
 - [ ] No commented code (If commented the reasons are given)
+- [ ] relevent commits only
