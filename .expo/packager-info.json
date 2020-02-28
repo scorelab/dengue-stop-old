@@ -1,9 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 13668,
-  "expoServerNgrokUrl": "https://pg-26r.anonymous.dengue-stop.exp.direct",
-  "packagerNgrokUrl": "https://packager.pg-26r.anonymous.dengue-stop.exp.direct",
-  "ngrokPid": 13678
+  "packagerPort": 19001,
+  "packagerPid": 1697,
+  "expoServerNgrokUrl": "https://2n-eg4.suvink.dengue-stop.exp.direct",
+  "packagerNgrokUrl": "https://packager.2n-eg4.suvink.dengue-stop.exp.direct",
+  "ngrokPid": 1715,
+  "webpackServerPort": 19006
 }

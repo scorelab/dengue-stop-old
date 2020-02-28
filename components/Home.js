@@ -1,18 +1,29 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
+import * as Font from 'expo-font'
+import { withNavigation } from 'react-navigation';
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoading: true };
+    this.state = { 
+      isLoading: true,
+      fontLoaded: false
+    };
   }
 
-  componentDidMount(){
+  async componentDidMount(){
+
+    await Font.loadAsync({
+      'oswald' : require('../assets/fonts/oswald.ttf')
+    });
+    this.setState({fontLoaded: true})
+
     return fetch('https://raw.githubusercontent.com/Suvink/dengue-stop/master/data.json')
       .then(response => response.json())
       .then (responseJson => {
-        console.log(responseJson);
+        //console.log(responseJson);
         this.setState(
          {
           isLoading: false,
@@ -25,8 +36,6 @@ export default class Home extends React.Component {
         console.error(error)
       })
   }
-
-
 
 render(){
   if (this.state.isLoading) {
@@ -46,8 +55,11 @@ render(){
           />
         </View>
 
-        <Text style={{ fontSize: 20, marginTop: 5, marginBottom: 5 }}>
+        <Text style={{ fontSize: 20, marginTop: 5, marginBottom: 5, fontFamily: 'oswald' }}>
           Our Life, Our Fight!
+        </Text>
+        <Text style={{ fontSize: 10, marginTop: 5, marginBottom: 5}}>
+          Welcome Suvin
         </Text>
       </View>
 
@@ -88,7 +100,7 @@ render(){
         {/* Report Case Button */}
         <View style={{ marginLeft: 10, marginRight: 10 }}>
           <TouchableOpacity
-            onPress={() => alert('Report Sent!')}
+            onPress={() => this.props.navigation.navigate('Report')}
             style={{
               borderWidth: 1,
               padding: 20,
@@ -218,7 +230,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   overview_text: {
-    fontSize: 15
+    fontSize: 15,
+    fontFamily: 'oswald'
   },
   overview_details: {
     fontSize: 30
