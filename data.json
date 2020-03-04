@@ -1,5 +1,19 @@
 {
-    "tot_cases" : "67,456",
-    "last_week" : "345",
-    "last_24hrs" : "21"
+    "stats": {
+        "tot_cases" : "67,456",
+        "last_week" : "345",
+        "last_24hrs" : "21"
+    },
+    "reports": [
+        {
+            "name" : "Sumanapala",
+            "address" : "galle",
+            "info" : "This is Sample data"
+        },
+        {
+            "name" : "Dilhani",
+            "address" : "Kandy",
+            "info" : "This is Sample data 2"
+        }
+    ]
 }

@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 1697,
-  "expoServerNgrokUrl": "https://2n-eg4.suvink.dengue-stop.exp.direct",
-  "packagerNgrokUrl": "https://packager.2n-eg4.suvink.dengue-stop.exp.direct",
-  "ngrokPid": 1715,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": 19006
 }

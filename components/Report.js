@@ -19,7 +19,7 @@ export default function Report({ navigation }){
         <Text style={{fontSize: 20}}>Report a Case</Text>
       </View>
 
-      <View>
+      <View style={{alignItems: 'center'}}>
           <TextInput style={styles.textInput} placeholder="Your Name" underlineColorAndroid={'orange'}></TextInput>
           <TextInput style={styles.textInput} placeholder="Your Address" underlineColorAndroid={'orange'}></TextInput>
           <TextInput style={styles.textInput} placeholder="More information on the incident" underlineColorAndroid={'orange'} numberOfLines={5} multiline={true} ></TextInput>

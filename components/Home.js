@@ -20,7 +20,7 @@ export default class Home extends React.Component {
     });
     this.setState({fontLoaded: true})
 
-    return fetch('https://raw.githubusercontent.com/Suvink/dengue-stop/master/data.json')
+    return fetch('https://dengue-stop-4fb58.firebaseio.com/stats.json')
       .then(response => response.json())
       .then (responseJson => {
         //console.log(responseJson);
