@@ -1,13 +1,9 @@
-name: Docker image CI
-on:
-    push:
-
+name: Docker Compose Actions Workflow
+on: push
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Build the docker-compose stack
-                run: docker-compose up -d
-            - name: Check running containers
-                run: docker ps -a
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose up -d
