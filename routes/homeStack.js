@@ -3,20 +3,25 @@ import{ createAppContainer } from 'react-navigation'
 import Home from '../components/Home'
 import Login from '../components/Login'
 import Report from '../components/Report'
+import Mapview from "../components/Mapview";
 
 
 const screens = {
     Login: {
-        screen: Report,
-        navigationOptions: {header: null}
+        screen: Login,
+        navigationOptions: {headerShown: false}
     },
     Home : {
         screen: Home,
-        navigationOptions: {header: null}
+        navigationOptions: {headerShown: false}
     },
     Report: {
         screen: Report,
-        createStackNavigator: {header: null}
+        createStackNavigator: {headerShown: false}
+    },
+    Map: {
+        screen: Mapview,
+        navigationOptions: {headerShown: false}
     }
 }
 const HomeStack = createStackNavigator(screens);

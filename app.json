@@ -26,6 +26,9 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.score.denguestop"
+    },
     "description": "",
     "githubUrl": "https://github.com/Suvink/dengue-stop/"
   }

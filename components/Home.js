@@ -12,7 +12,6 @@ export default class Home extends React.Component {
       fontLoaded: false
     };
   }
-
   async componentDidMount(){
 
     await Font.loadAsync({
@@ -64,7 +63,7 @@ render(){
       </View>
 
       {/* Statistics */}
-      <View style={{ marginTop: 30, marginBottom: 30 }}>
+      <View style={{ marginTop: 10, marginBottom: 20 }}>
         <View>
           <View style={styles.column}>
             <View style={styles.item}>
@@ -91,6 +90,23 @@ render(){
               <Text style={styles.overview_text}>Last 24hrs</Text>
             </View>
           </View>
+        </View>
+
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Map')}
+              style={{
+                borderWidth: 1,
+                padding: 10,
+                borderRadius: 10,
+                borderColor: 'orange',
+                width: 200
+              }}
+            >
+              <Text style={{textAlign: 'center'}}>
+                See Map
+              </Text>
+            </TouchableOpacity>
         </View>
       </View>
 
