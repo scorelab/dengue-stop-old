@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
 import {Actions} from "react-native-router-flux";
 import styles from './styles';
@@ -15,9 +14,9 @@ class Login extends React.Component {
   }
 
   static propTypes = {
-    popRoute: PropTypes.func,
-    navigation: PropTypes.shape({
-      key: PropTypes.string,
+    popRoute: React.PropTypes.func,
+    navigation: React.PropTypes.shape({
+      key: React.PropTypes.string,
     }),
   }
 
