@@ -1,14 +1,10 @@
 import React, {
   Component,
 } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import Launch from './components/launch';
-import Login from './components/login';
-import Home from './components/home';
+import { StyleSheet, Text, View } from 'react-native';
+import Launch from './js/components/launch';
+import Login from './js/components/login';
+import Home from './js/components/home';
 import {
   Scene,
   Router,
@@ -39,18 +35,14 @@ const reducerCreate = params => {
   };
 };
 
-class AppNavigator extends Component {
-  render() {
-    return (
-      <Router createReducer={reducerCreate}>
+export default function App() {
+  return (
+    <Router createReducer={reducerCreate}>
         <Scene key="root">
           <Scene key="launch" component={Launch}/>
           <Scene key="login" component={Login} initial hideNavBar/>
           <Scene key="home" component={Home} title="Home" hideNavBar/>
         </Scene>
       </Router>
-    );
-  }
+  );
 }
-
-export default AppNavigator;
