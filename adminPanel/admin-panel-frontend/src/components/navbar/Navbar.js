@@ -3,7 +3,10 @@ import {
 MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
 } from "mdbreact";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import Home from '../home/Home';
+import PatientList from '../patientList/PatientList';
+import Maps from "../maps/Maps";
 
 class NavbarPage extends Component {
 state = {
@@ -25,13 +28,13 @@ render() {
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
             <MDBNavItem active>
-              <MDBNavLink to="#!">Home</MDBNavLink>
+              <MDBNavLink to="/home">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Dengue Map</MDBNavLink>
+              <MDBNavLink to="/map">Dengue Map</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Patient List</MDBNavLink>
+              <MDBNavLink to="/patientList">Patient List</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink to="#!"></MDBNavLink>
@@ -42,10 +45,9 @@ render() {
                   <span className="mr-2">Settings</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Action 1</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Action 2</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Action 3</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -57,10 +59,8 @@ render() {
                   <MDBIcon icon="user" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Profile Settings</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Logout</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -76,6 +76,9 @@ render() {
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
+      <Route exact path="/home" component={Home} />
+      <Route path="/map" component={Maps} />
+      <Route path="/patientList" component={PatientList} />
     </Router>
     );
   }
