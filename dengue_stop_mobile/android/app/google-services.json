@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "655080442661",
+    "firebase_url": "https://denguestopcommunityapp.firebaseio.com",
+    "project_id": "denguestopcommunityapp",
+    "storage_bucket": "denguestopcommunityapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655080442661:android:121678fb6fe5adc40e68cc",
+        "android_client_info": {
+          "package_name": "com.example.ds_communityapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655080442661-gfrob3hq2988puklop45ip5c7r5kti7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyYsLXQ6kXEmVe61YQqE5_0cDBFZb6NQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655080442661-gfrob3hq2988puklop45ip5c7r5kti7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
