@@ -30,10 +30,6 @@ app.get("/", (req, res) => {
   res.send("<p>Dengue Stop Server :) </p>");
 });
 
-app.get("/test", (req, res) => {
-  res.send("<p>This is test  from Rohan</p>");
-});
-
 app.get('*', function(req, res){
   res.status(404).json({status:"ERROR",message:"Not route found"});
 });
