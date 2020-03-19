@@ -30,9 +30,12 @@ class DashboardTwoPage extends StatelessWidget {
             child: Text('Bubble Map'
               ,style: TextStyle(color: Colors.white,fontSize: 16.0),
             ),
-            height: 200,
+            height: 50,
             width: 1000,
             color: Colors.black,
+          ),
+          Image(
+            image: AssetImage('img/source.gif'),
           ),
           const SizedBox(height: 10.0,),
           Row(

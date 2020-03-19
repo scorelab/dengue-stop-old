@@ -28,6 +28,8 @@ dependencies:
   provider: ^4.0.4
   font_awesome_flutter: ^8.7.0
   flutter_spinkit: ^4.1.2
+  flutter_map:
+  google_maps_flutter: ^0.4.0
 
 dev_dependencies:
   flutter_test:
