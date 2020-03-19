@@ -1,14 +1,14 @@
 name: Docker Compose Actions Workflow
 on: [push, pull_request]
 jobs:
-  node app:
+  - node app:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: docker-compose up -d
   
-  flutter app:
+  - flutter app:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
