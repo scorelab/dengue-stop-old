@@ -1,7 +1,7 @@
 import 'package:dengustop/data/local/providers/config_provider.dart';
 
 class Repository {
-  ConfigProvier _configProvier;
+  ConfigProvider _configProvider;
 
   // singleton
   static final Repository _repository = Repository._internal();
@@ -10,5 +10,13 @@ class Repository {
     return _repository;
   }
 
-  Repository._internal() : _configProvier = ConfigProvier();
+  Future<void> setDarkTheme(bool mode) {
+    return _configProvider.setDarkTheme(mode);
+  }
+
+  Future<bool> getDarkTheme() {
+    return _configProvider.getDarkTheme();
+  }
+
+  Repository._internal() : _configProvider = ConfigProvider();
 }

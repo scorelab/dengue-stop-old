@@ -1,17 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-const _DARK_MODE = "dark_mode";
+class ConfigProvider {
+  final String darkTheme = "config-dark-theme";
 
-class ConfigProvier {
-  Future<void> setDarkMode(bool state) {
-    return SharedPreferences.getInstance().then((pref) {
-      pref.setBool(_DARK_MODE, state);
-    });
-  }
+  Future<void> setDarkTheme(bool mode) => SharedPreferences.getInstance()
+      .then((pref) => pref.setBool(darkTheme, mode));
 
-  Future<bool> getDarkModeState() {
-    return SharedPreferences.getInstance().then((pref) {
-      return pref.getBool(_DARK_MODE) ?? false;
-    });
-  }
+  Future<bool> getDarkTheme() =>
+      SharedPreferences.getInstance().then((pref) => pref.get(darkTheme));
 }
