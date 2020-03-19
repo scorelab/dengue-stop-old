@@ -24,7 +24,9 @@ jobs:
           flutter pub get
           flutter test
           flutter build apk
-      - uses: actions/upload-artifact@v1
+          ls
+      - name: upload artifact
+        uses: actions/upload-artifact@v1
         with:
           name: flutter apk
           path: ./mobile/build/app/outputs/apk/debug/app-debug.apk
