@@ -1,9 +1,10 @@
-import 'package:dengustop/screen/chat/chat_screen.dart';
-import 'package:dengustop/screen/map/map_screen.dart';
-import 'package:dengustop/screen/profile/profile_screen.dart';
-import 'package:dengustop/screen/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:dengustop/screens/chat/chat_screen.dart';
+import 'package:dengustop/screens/map/map_screen.dart';
+import 'package:dengustop/screens/profile/profile_screen.dart';
+import 'package:dengustop/screens/settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
