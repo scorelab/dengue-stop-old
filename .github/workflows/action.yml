@@ -18,7 +18,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable' # or: 'dev' or 'beta'
-      -name: flutter build
+      - name: flutter build
         working-directory: ./mobile
         run: |
           flutter pub get
