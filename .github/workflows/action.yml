@@ -27,5 +27,5 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: flutter apk
-          path: ./build/app/outputs/apk/debug/app-debug.apk
+          path: ./mobile/build/app/outputs/apk/debug/app-debug.apk
           working-directory: ./mobile
