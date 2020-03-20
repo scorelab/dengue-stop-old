@@ -22,6 +22,32 @@ require("./strategy/jsonwtStrategy")(passport);
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
+//MongoDB Init
+
+var db = require("./config/DBSetup").DBURL;
+
+console.log("Connecting to  : " + db);
+const authData = {
+  user: process.env.MONGO_USERNAME,
+  pass: process.env.MONGO_PASSWORD,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+};
+
+
+//MongoDB Connect
+mongoose
+  .connect(db, authData)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log("MongoDB Connection  Error " + err));
+
+
+
+
+
+
 // Importing all the routes/api
 app.use("/auth",Auth);
 

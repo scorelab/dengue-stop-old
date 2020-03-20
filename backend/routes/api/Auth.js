@@ -28,4 +28,6 @@ router.get("/landing", authController.Landing);
 
 
 
+
+
 module.exports = router;
