@@ -1,4 +1,4 @@
 module.exports = {
-    DBURL:"mongodb://ds143678.mlab.com:43678/dengue-stop",
+    DBURL:"mongodb://ds261136.mlab.com:61136/denguestop",
     secret: "SecretToken"
   };

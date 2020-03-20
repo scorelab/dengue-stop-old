@@ -23,12 +23,19 @@ router.get("/", (req, res) => {
 
 const authController=require('../../controllers/Authorize');
 
-//REGISTER ROUTE
+//Landing test ROUTE
 router.get("/landing", authController.Landing);
 
-router.get("/register", authController.register);
-router.get("/login", authController.login);
-router.get("/updatepassword", authController.updatePassword);
+
+//Register ROUTE
+router.post("/register", authController.register);
+
+//Login ROUTE
+router.post("/login", authController.login);
+
+
+//Update Passeord ROUTE
+router.post("/updatepassword", authController.updatePassword);
 
 
 
