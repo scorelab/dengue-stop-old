@@ -32,4 +32,6 @@ router.get("/updatepassword", authController.updatePassword);
 
 
 
+
+
 module.exports = router;
