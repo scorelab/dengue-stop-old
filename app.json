@@ -5,9 +5,7 @@
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
-      "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -27,7 +25,8 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.score.denguestop"
+      "package": "com.score.denguestop",
+      "versionCode": 1
     },
     "description": "",
     "githubUrl": "https://github.com/Suvink/dengue-stop/"
