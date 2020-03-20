@@ -26,6 +26,10 @@ const authController=require('../../controllers/Authorize');
 //REGISTER ROUTE
 router.get("/landing", authController.Landing);
 
+router.get("/register", authController.register);
+router.get("/login", authController.login);
+router.get("/updatepassword", authController.updatePassword);
+
 
 
 module.exports = router;
