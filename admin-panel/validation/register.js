@@ -1,5 +1,6 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
+const passwordCheck = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 // Convert empty fields to an empty string so we can use validator functions
@@ -24,12 +25,13 @@ module.exports = function validateRegisterInput(data) {
 if (Validator.isEmpty(data.password2)) {
     errors.password2 = "Confirm password field is required";
   }
-if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Password must be at least 6 characters";
+if (!(passwordCheck.test(data.password))) {
+    errors.password = "Password must follow standard rules";
   }
 if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords must match";
   }
+if ()
 return {
     errors,
     isValid: isEmpty(errors)
