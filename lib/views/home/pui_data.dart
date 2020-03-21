@@ -18,6 +18,7 @@ class PUIdata extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
+        title: Text('Report'),
       ),
       body: SingleChildScrollView(
         child: Column(
