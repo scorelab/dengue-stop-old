@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dengue_stop/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class MainScreen extends StatefulWidget {
   static const String id = "main";
@@ -9,6 +11,25 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      loggedInUser = user;
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +39,8 @@ class _MainScreenState extends State<MainScreen> {
             IconButton(
                 icon: Icon(Icons.close),
                 onPressed: () {
-                  //Implement logout functionality
+                  _auth.signOut();
+                  Navigator.pop(context);
                 }),
           ],
           title: Text('Main Screen'),
