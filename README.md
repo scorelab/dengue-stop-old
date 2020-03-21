@@ -2,7 +2,11 @@
 Dengue-Stop provides a simple and effective way to report and discover dengue incidents around your area, with the help of community. 
 
 # Installation
-1. Setup react native environment  
+1. Setup react native environment following the steps on the given link:  
+    
+    https://reactnative.dev/docs/getting-started
+    
+    
 2. Go to your terminal and execute this command
     ```
     git clone https://github.com/scorelab/dengue-stop.git
