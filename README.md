@@ -1,26 +1,16 @@
-# Dengue-Stop
-Dengue-Stop provides a simple and effective way to report and discover dengue incidents around your area, with the help of community. 
+# flutter_app
 
-# Installation
-1. Setup react native environment  
-2. Go to your terminal and execute this command
-    ```
-    git clone https://github.com/scorelab/dengue-stop.git
-    ```
+A new Flutter application.
 
-3. Run this command in side the project folder to install node modules
-    ```
-    npm install
-    ```
-  
-4. Run the react native android project by following command
-    ```
-    react-native run-android
-    ```
-    
-5. Wait for a few minutes and the app should start on your device (android phone or emulator)
+## Getting Started
 
+This project is a starting point for a Flutter application.
 
-# License
+A few resources to get you started if this is your first Flutter project:
 
-This project is licensed under the terms of the Apache License 2.0.
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

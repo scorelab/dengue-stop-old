@@ -1,39 +1,37 @@
 {
   "project_info": {
-    "project_number": "85172514515",
-    "firebase_url": "https://dengue-stop.firebaseio.com",
-    "project_id": "dengue-stop",
-    "storage_bucket": "dengue-stop.appspot.com"
+    "project_number": "655080442661",
+    "firebase_url": "https://denguestopcommunityapp.firebaseio.com",
+    "project_id": "denguestopcommunityapp",
+    "storage_bucket": "denguestopcommunityapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:85172514515:android:1f04daf5eedc8fcc",
+        "mobilesdk_app_id": "1:655080442661:android:121678fb6fe5adc40e68cc",
         "android_client_info": {
-          "package_name": "com.dengue_stop"
+          "package_name": "com.example.ds_communityapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "85172514515-ue2pilsmmj5f68ml1ajljm9lmfc64pt0.apps.googleusercontent.com",
+          "client_id": "655080442661-gfrob3hq2988puklop45ip5c7r5kti7p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAqY3RIHul9zCoJF-zvRTT9Hmc9EJktvJs"
+          "current_key": "AIzaSyDyYsLXQ6kXEmVe61YQqE5_0cDBFZb6NQ0"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655080442661-gfrob3hq2988puklop45ip5c7r5kti7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
