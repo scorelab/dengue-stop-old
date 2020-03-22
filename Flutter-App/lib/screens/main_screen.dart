@@ -92,9 +92,12 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.white70,
         buttonBackgroundColor: Colors.blueAccent,
         height: 50,
+        index: 2,
         items: <Widget>[
           Icon(Icons.home, size: 20, color: Colors.white,),
+          Icon(Icons.healing, size: 20, color: Colors.white,),
           Icon(Icons.add, size: 20, color: Colors.white,),
+          Icon(Icons.chat, size: 20, color: Colors.white,),
           Icon(Icons.map, size: 20, color: Colors.white,),
         ],
         animationDuration: Duration(
