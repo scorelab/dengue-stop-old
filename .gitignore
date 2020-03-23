@@ -58,3 +58,4 @@ backend/app-env
 
 #React NPM Modules
 client/node_modules
+client/app-env
