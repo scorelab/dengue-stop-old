@@ -1,7 +1,7 @@
 # OSX
 #
 .DS_Store
-
+backend/app-env
 # Xcode
 #
 build/
@@ -51,3 +51,10 @@ buck-out/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+
+
+#app-env for backend
+backend/app-env
+
+#React NPM Modules
+client/node_modules
