@@ -4,13 +4,21 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
+      type: 'password',
+      Icon: <VisibilityIcon/>
     };
   }
 
@@ -31,6 +39,12 @@ if (nextProps.errors) {
       });
     }
   }
+
+  handleClick = () => this.setState(({type}) => ({
+    Icon: type === 'text' ? <VisibilityIcon/> : <VisibilityOffIcon/> ,
+    type: type === 'text' ? 'password' : 'text'
+  }))
+
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
@@ -84,7 +98,7 @@ return (
                   value={this.state.password}
                   error={errors.password}
                   id="password"
-                  type="password"
+                  type={this.state.type}
                   className={classnames("", {
                     invalid: errors.password || errors.passwordincorrect
                   })}
@@ -95,6 +109,9 @@ return (
                   {errors.passwordincorrect}
                 </span>
               </div>
+              <IconButton aria-label="info" onClick = {this.handleClick}>
+                  {this.state.Icon}
+              </IconButton>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{
