@@ -1,6 +1,7 @@
 export default theme=>({
     root:{
-        display:'flex'
+        display:'flex',
+        background:'#fff'
     },
     toolbar: {
         display: 'flex',
