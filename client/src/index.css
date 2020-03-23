@@ -22,7 +22,7 @@ code {
 body {
   background: #1C8EF9 !important;
   min-height: 100vh;
-  display: flex;
+  display: auto;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
 }
@@ -69,7 +69,6 @@ body, html, .App, #root, .auth-wrapper {
   border-radius: 10px;
   border: 1px solid #BCE0FD;
 }
-
 
 
 .auth-wrapper h3 {
