@@ -48,7 +48,7 @@ function SideDrawer(props) {
     <div>
       <List>
         {['Reports', 'Past', 'Events', 'Statistics'].map((text, index) => (
-          <Tooltip title={text} arrow id={text} placement='right' >
+          <Tooltip key={text} title={text}  arrow id={text} placement='right' >
             <ListItem button key={text} component={RouterLink} to={'/'+text} >
               <ListItemIcon>
                 {index % 2 === 0 ? 
@@ -62,7 +62,7 @@ function SideDrawer(props) {
       <Divider />
       <List>
         {['Locations', 'Cases'].map((text, index) => (
-          <Tooltip title={text} arrow id={text} placement='right' >
+          <Tooltip key={text} title={text} arrow id={text} placement='right' >
             <ListItem button key={text} component={RouterLink} to={'/'+text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />

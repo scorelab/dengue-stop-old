@@ -2,7 +2,6 @@ const drawerWidth = 240;
 
 export default theme => ({
     drawerOpen: {
-      position: 'relative',
       whiteSpace: 'nowrap',
       width: drawerWidth,
       transition: theme.transitions.create('width', {
