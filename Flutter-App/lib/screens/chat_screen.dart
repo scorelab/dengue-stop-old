@@ -32,31 +32,31 @@ class _ChatScreenState extends State<ChatScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
 
-//            Container(
-//              decoration: kMessageContainerDecoration,
-//              child: Row(
-//                crossAxisAlignment: CrossAxisAlignment.center,
-//                children: <Widget>[
-//                  Expanded(
-//                    child: TextField(
-//                      onChanged: (value) {
-//                        //Do something with the user input.
-//                      },
-//                      decoration: kMessageTextFieldDecoration,
-//                    ),
-//                  ),
-//                  FlatButton(
-//                    onPressed: () {
-//                      //Implement send functionality.
-//                    },
-//                    child: Text(
-//                      'Send',
-//                      style: kSendButtonTextStyle,
-//                    ),
-//                  ),
-//                ],
-//              ),
-//            ),
+            Container(
+              decoration: kMessageContainerDecoration,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      onChanged: (value) {
+                        //Do something with the user input.
+                      },
+                      decoration: kMessageTextFieldDecoration,
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      //Implement send functionality.
+                    },
+                    child: Text(
+                      'Send',
+                      style: kSendButtonTextStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
