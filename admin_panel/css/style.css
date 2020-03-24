@@ -1,0 +1,48 @@
+html, body{
+    height: 100vh;
+    background-color: #031628;
+    color: white !important;
+}
+.is-fullheight{
+    min-height: calc(100vh - 3.25rem);
+    height:100vh;
+}
+.navbar{
+    background-color: #031628;
+}
+.column{
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+}
+.navbar-item{
+    color: white !important;
+    font-weight: 700;
+}
+.title, .subtitle{
+    color: white;
+}
+.is-peach{
+    background-image: linear-gradient(to right,#f1883b , #e63c6e);
+    border: none;
+    color: white
+}
+.report{
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px
+}
+.report-body > * {
+    display: inline
+}
+.fa{
+    color:#f1883b !important;
+}
+.navbar-item:hover{
+    background-color: transparent !important;
+    text-decoration: none !important;
+    color: #f1883b !important;
+}
+#map {
+    height: 100%;
+  }
