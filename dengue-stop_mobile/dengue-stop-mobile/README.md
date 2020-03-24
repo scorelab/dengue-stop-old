@@ -15,3 +15,10 @@ you need to create an account in firebase and register with project name
 you need to create a MAP API to implement and developed the map features 
 
 you should goto google cloud platform and then create a account and create a MAP api with the given instructions by the google map platform
+
+
+##Emulator Settings
+
+Make sure to turn on the wifi settings and location settings
+
+
