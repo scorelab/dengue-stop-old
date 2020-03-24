@@ -4,6 +4,7 @@ import 'package:dengue_stop/constants.dart';
 import 'package:dengue_stop/screens/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:dengue_stop/components/dialog_box.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = "registrations";
@@ -18,6 +19,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
   String email;
   String password;
+
+  DialogBox _dialogBox = DialogBox();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +90,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           });
                         }
                       } catch (e) {
-                        print(e);
+                        _dialogBox.information(
+                            context, 'Error', 'Invalid Username or Username alredy exists.');
+                        setState(() {
+                          showSpinner = false;
+                        });
                       }
                     },
                   ),
