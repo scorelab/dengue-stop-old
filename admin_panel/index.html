@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.8.x-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/helpers.css">
+    <link rel="shortcut icon" href="img/icon.png" />
+    <title>Dengue Stop</title>
+</head>
+<body>
+    <nav class="navbar animated fadeInDown" role="navigation" aria-label="main navigation" id="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <img src="img/logo.png" width="112" height="28">
+            </a>
+        </div>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="menubar">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div id="menubar" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://github.com/Suvink/dengue-stop">Mobile App</a>
+                <a class="navbar-item" href="https://scorelab.org/">SCoRE Lab</a>
+                <a class="navbar-item" href="https://github.com/scorelab">GitHub</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-peach" href="contact.html">
+                            <strong>Login</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8 is-fullheight animated zoomIn" style="padding: 0 !important;">
+                <div id="map" width="100%" height="100%" frameborder="0" style="border:0;border-radius: 20px !important;"></div>
+            </div>
+            <div class="column is-4 is-fullheight animated fadeInRight">
+                <div>
+                    <img src="img/logo.png">
+                    <div>
+                        <h1 class="title is-4 mb-0">Total Cases</h1>
+                        <h1 class="subtitle is-1 mt-0" id="tot_cases">Loading...</h1>
+                    </div>
+                </div>
+                <div class="columns mt-2">
+                    <div class="column">
+                        <div>
+                            <h1 class="title is-4 mb-0">Last Week</h1>
+                            <h1 class="subtitle is-1 mt-0" id="last_wk">Loading...</h1>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div>
+                            <h1 class="title is-4 mb-0">Last 24hrs</h1>
+                            <h1 class="subtitle is-1 mt-0" id="last_24">Loading...</h1>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="title is-5 mt-2 ml-1" style="text-align: left !important;">Recent Reports</h1>
+                <div id="reports_block">
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFrjLCeRaBbCqRzmIXmfjGFrAi2v25Q4"></script>
+</body>
+</html>
