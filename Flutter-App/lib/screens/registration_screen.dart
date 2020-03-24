@@ -91,7 +91,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         }
                       } catch (e) {
                         _dialogBox.information(
-                            context, 'Error', 'Invalid Username or Username alredy exists.');
+                            context, 'Error', 'Invalid Username or Username alredy exists. Make sure Password contains atleast 6 characters.');
                         setState(() {
                           showSpinner = false;
                         });
