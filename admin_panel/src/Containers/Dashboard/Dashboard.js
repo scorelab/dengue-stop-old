@@ -11,17 +11,17 @@ class Dashboard extends Component{
         const {classes}= this.props;
         return(
             <div className={classes.dbWrapper}>
-            <Grid container spacing={2} >
-                <Grid item md={3} lg={3 } className={classes.leftPortion} >
-                    <LocationData />
+                <Grid container spacing={2} >
+                    <Grid item md={3} lg={3 } className={classes.leftPortion} >
+                        <LocationData />
+                    </Grid>
+                    <Grid item md={3} lg={3} className={classes.middlePortion}>
+                        <SelectedLocationData />
+                    </Grid>
+                    <Grid item md={6} lg={6}>
+                        <Map />
+                    </Grid>
                 </Grid>
-                <Grid item md={3} lg={3} className={classes.middlePortion}>
-                    <SelectedLocationData />
-                </Grid>
-                <Grid item md={6} lg={7}>
-                    {/* <Map /> */}
-                </Grid>
-            </Grid>
             </div>
             
         )

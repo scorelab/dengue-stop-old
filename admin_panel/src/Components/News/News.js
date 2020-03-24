@@ -6,37 +6,45 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
+  content: {
+    padding:'0 8px',
+    '&:last-child':{
+      paddingBottom:0,
+    }
+  },
+  cover: {
+    width: '200px',
+    borderRadius:'5px',
+  },
   details: {
     display: 'flex',
     flexDirection: 'column',
   },
-  content: {
-    flex: '1 0 auto',
-  },
-  cover: {
-    width: 151,
-    height:'100px'
-  },
+  newsCard:{
+    display:'flex',
+    marginBottom:theme.spacing(2),
+    padding:theme.spacing(1),
+  }
 }));
 
 function News(props) {
   const classes = useStyles();
   return (
-    <Card>
+    <Card className={classes.newsCard}>
+      <CardMedia
+        className={classes.cover}
+        image="https://www.healthxchange.sg/sites/hexassets/Assets/children/when-dengue-fever-becomes-severe-dengue.jpg"
+      />
       <div className={classes.details}>
-        <CardContent className={classes.content}>
-            <Typography component="h5" variant="subtitle1">
-                Live From Space lorem iisbf
-            </Typography>
-            <Typography variant="caption" color="textSecondary">
-                Global News
-            </Typography>
+        <CardContent classes={{root:classes.content}}>
+          <Typography variant="subtitle2">
+            Dengue infections hit 4000, doubling from same period last year..
+          </Typography>
+          <Typography variant="caption" color="textSecondary">
+              Global News
+          </Typography>
         </CardContent>
       </div>
-        <CardMedia
-            className={classes.cover}
-            src="https://image.shutterstock.com/image-photo/mountains-during-sunset-beautiful-natural-260nw-407021107.jpg"
-        />
     </Card>
   )
 }

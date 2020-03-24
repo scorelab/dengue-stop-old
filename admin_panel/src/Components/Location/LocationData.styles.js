@@ -4,4 +4,8 @@ export default theme=>({
         overflowY: 'auto',
         overflowX:'hidden',
     },
+    newsContainer:{
+        marginTop:theme.spacing(2),
+        marginRight:theme.spacing(2)
+    }
 })
