@@ -1,21 +1,38 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/home/user_settings.dart';
 
 
 class Profile extends StatelessWidget {
-  static final String path = "lib/src/pages/profile/profile7.dart";
+
+  String _username = 'John Doe';
 
   @override
   Widget build(BuildContext context) {
+
+    void _showSettingsUser(){
+      showModalBottomSheet(
+          context: context,
+          builder: (context){
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 60.0),
+              child: UserSettings(),
+
+            );
+          }
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: Colors.redAccent,
         title: Text('User Profile'),
         actions: <Widget>[
-//          RaisedButton(
-//            child: Text('Settings'),
-//            //color: Colors.grey.shade800,
-//          ),
+          FlatButton.icon(
+              onPressed: ()=>_showSettingsUser(),
+              icon: Icon(Icons.settings_applications),
+              label: Text('Settings')
+          ),
         ],
       ),
         floatingActionButton: FloatingActionButton(
@@ -33,16 +50,8 @@ class Profile extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     width: double.infinity,
-                    height: 330,
-                    color: Colors.grey.shade700,
-                  ),
-                  Positioned(
-                    top: 10,
-                    right: 30,
-                    child: Icon(
-                      Icons.settings,
-                      color: Colors.black,
-                    ),
+                    height: 250,
+                    color: Colors.grey.shade800,
                   ),
                   Column(
                     children: <Widget>[
@@ -61,7 +70,7 @@ class Profile extends StatelessWidget {
                         padding: EdgeInsets.all(4),
                       ),
                       Text(
-                        "Sahan Dissanayaka",
+                        _username,
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
@@ -80,7 +89,7 @@ class Profile extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 77),
+                        margin: EdgeInsets.only(top: 17),
                         padding: EdgeInsets.all(10),
                         child: Card(
                           child: Row(
@@ -138,7 +147,8 @@ class Profile extends StatelessWidget {
                           ),
                         ),
                       ),
-                      UserInfo()
+                      UserInfo(),
+                      HealthInfo()
                     ],
                   )
                 ],
@@ -166,6 +176,72 @@ class UserInfo extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Text(
                       "User Information",
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  Divider(
+                    color: Colors.black,
+                  ),
+                  Container(
+                      child: Column(
+                        children: <Widget>[
+                          ListTile(
+                            contentPadding:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                            leading: Icon(Icons.my_location),
+                            title: Text("Location"),
+                            subtitle: Text("Colombo, Sri lanka"),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.email),
+                            title: Text("Email"),
+                            subtitle: Text("sahan@gmail.com"),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.phone),
+                            title: Text("Phone"),
+                            subtitle: Text("+94 775365565"),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.person),
+                            title: Text("About Me"),
+                            subtitle: Text(
+                                "This is a about me link and you can khow about me in this section."),
+                          ),
+                        ],
+                      ))
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class HealthInfo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Column(
+        children: <Widget>[
+          Card(
+            child: Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.all(15),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Health Information",
                       style: TextStyle(
                         color: Colors.black87,
                         fontWeight: FontWeight.w500,

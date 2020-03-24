@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/report/mainfile.dart';
 import 'package:flutter_app/views/home/activities.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocation/geolocation.dart';
@@ -15,9 +16,8 @@ class MapNavigation extends StatefulWidget {
 
 class _MapNavigationState extends State<MapNavigation> {
   GoogleMapController _controller;
-  bool mapToggle = false;
   String _mapStyle;
-
+  double zoomVal=5.0;
 
   void initState(){
     super.initState();
@@ -40,6 +40,8 @@ class _MapNavigationState extends State<MapNavigation> {
       body: Stack(
             children: <Widget>[
               _googleMap(context),
+              _zoomminusfunction(),
+              _zoomplusfunction(),
             ],
           ),
       floatingActionButton: FloatingActionButton.extended(
@@ -47,13 +49,47 @@ class _MapNavigationState extends State<MapNavigation> {
             Navigator.push(
               context,
                 MaterialPageRoute(
-                       builder: (context) => PUIdata()));
+                       builder: (context) => MyHomePage()));
           },
           label: Text('Add PUI',style: TextStyle(color: Colors.black),),
           backgroundColor: Colors.green,
           icon: Icon(FontAwesomeIcons.plusSquare),
       ),
     );
+  }
+
+  Widget _zoomminusfunction() {
+
+    return Align(
+      alignment: Alignment.topLeft,
+      child: IconButton(
+          icon: Icon(FontAwesomeIcons.searchMinus,color:Color(0xff6200ee)),
+          onPressed: () {
+            zoomVal--;
+            _minus( zoomVal);
+          }),
+    );
+  }
+  Widget _zoomplusfunction() {
+
+    return Align(
+      alignment: Alignment.topRight,
+      child: IconButton(
+          icon: Icon(FontAwesomeIcons.searchPlus,color:Color(0xff6200ee)),
+          onPressed: () {
+            zoomVal++;
+            _plus(zoomVal);
+          }),
+    );
+  }
+
+  Future<void> _minus(double zoomVal) async {
+    final GoogleMapController controller = await _controller;
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(40.712776, -74.005974), zoom: zoomVal)));
+  }
+  Future<void> _plus(double zoomVal) async {
+    final GoogleMapController controller = await _controller;
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(40.712776, -74.005974), zoom: zoomVal)));
   }
 
   Widget _googleMap(BuildContext context){
@@ -77,6 +113,7 @@ class _MapNavigationState extends State<MapNavigation> {
     );
   }
 
+
   Widget _patientInfo(){
     return Align(
       alignment: Alignment.bottomLeft,
@@ -88,7 +125,8 @@ class _MapNavigationState extends State<MapNavigation> {
           children: <Widget>[
             SizedBox(width: 10.0,),
             Padding(
-
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Patient Info Container'),
             ),
 
           ],
@@ -96,21 +134,38 @@ class _MapNavigationState extends State<MapNavigation> {
       ),
     );
   }
+
+  Future<void> _getLocation(double lat,double long) async{
+    final GoogleMapController controller = await _controller;
+    controller.animateCamera(
+        CameraUpdate.newCameraPosition(CameraPosition(
+          target: LatLng(lat,long),
+          zoom: 15,
+          tilt: 50.0,
+          bearing: 45.0,
+        )
+        )
+    );
+  }
+
+
 }
 
+
+
 Marker colombo= Marker(
-  markerId: MarkerId('colombo1'),
+  markerId: MarkerId('colombo'),
   position: LatLng(6.7897, 79.8913),
-  infoWindow: InfoWindow(title: 'case 0\nHospitalized'),
+  infoWindow: InfoWindow(title: 'Hospitalized'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueGreen
   ),
 );
 
 Marker colombo1= Marker(
-      markerId: MarkerId('colombo2'),
+      markerId: MarkerId('colombo1'),
       position: LatLng(6.8301, 79.8801),
-      infoWindow: InfoWindow(title: 'case1\nHospitalized - covid 19'),
+      infoWindow: InfoWindow(title: 'Hospitalized - covid 19'),
       icon: BitmapDescriptor.defaultMarkerWithHue(
       BitmapDescriptor.hueViolet
       ),
@@ -119,25 +174,25 @@ Marker colombo1= Marker(
 Marker colombo2= Marker(
   markerId: MarkerId('colombo2'),
   position: LatLng(6.935404800000001,80.593759999999),
-  infoWindow: InfoWindow(title: 'case2\nDeath Case - Dengue'),
+  infoWindow: InfoWindow(title: 'Death Case - Dengue'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
       BitmapDescriptor.hueRed
   ),
 );
 
 Marker colombo3= Marker(
-  markerId: MarkerId('colombo2'),
+  markerId: MarkerId('colombo3'),
   position: LatLng(6.9117, 79.8646),
-  infoWindow: InfoWindow(title: 'case3\nRecovered'),
+  infoWindow: InfoWindow(title: 'Recovered'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
       BitmapDescriptor.hueGreen
   ),
 );
 
 Marker colombo4= Marker(
-  markerId: MarkerId('colombo2'),
+  markerId: MarkerId('colombo4'),
   position: LatLng(7.2906, 80.6337),
-  infoWindow: InfoWindow(title: 'case 4\nHospitalized'),
+  infoWindow: InfoWindow(title: 'Hospitalized'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
       BitmapDescriptor.hueBlue
   ),

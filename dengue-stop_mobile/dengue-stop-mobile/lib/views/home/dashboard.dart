@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/home/maplocation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DashboardTwoPage extends StatelessWidget {
@@ -13,7 +14,15 @@ class DashboardTwoPage extends StatelessWidget {
         elevation: 0,
         title: Text("Dashboard"),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(icon: Icon(
+              FontAwesomeIcons.search),
+              onPressed: () {
+            //
+          }),
+        ],
       ),
+
       body: _buildBody(context),
     );
   }
@@ -24,18 +33,25 @@ class DashboardTwoPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildHeader(),
-          const SizedBox(height: 30.0),
+          const SizedBox(height: 10.0),
           Container(
             padding: EdgeInsets.all(10.0),
-            child: Text('Bubble Map'
-              ,style: TextStyle(color: Colors.white,fontSize: 16.0),
+            child: FlatButton(
+              color: Colors.green,
+              textColor: Colors.white,
+              padding: EdgeInsets.all(8.0),
+              splashColor: Colors.blueAccent,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MapNavigation()));
+              },
+              child: Text(
+                "View Map Dashboard",
+                style: TextStyle(fontSize: 18.0),
+              ),
             ),
-            height: 50,
-            width: 1000,
-            color: Colors.black,
-          ),
-          Image(
-            image: AssetImage('img/source.gif'),
           ),
           const SizedBox(height: 10.0,),
           Row(
@@ -259,7 +275,10 @@ class DashboardTwoPage extends StatelessWidget {
                 ),
               )
             ],
-          )
+          ),
+          SizedBox(height: 10.0,),
+          Text('demo'),
+
         ],
       ),
     );
@@ -287,12 +306,6 @@ class DashboardTwoPage extends StatelessWidget {
                 "Local Analysis",
                 style: whiteText.copyWith(fontSize: 20.0),
               ),
-              RaisedButton(
-                child: Text('View Global'),
-                //textColor: Colors.white,
-                onPressed: (){},
-              ),
-              //const SizedBox(height: 5.0),
               Text(
                 "Virus : COVID-19 Corona",
                 style: TextStyle(color: Colors.grey, fontSize: 16.0),
