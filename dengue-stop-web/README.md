@@ -16,4 +16,6 @@ Now run the project
 
 `yarn start`
 
-![Admin Panel](https://ibb.co/HV9ZKM0)
+![Admin Login](https://i.ibb.co/qFHBv88/Screenshot-from-2020-03-25-14-05-17.png)
+
+![Admin Panel](https://i.ibb.co/Vtk6Lhd/Screenshot-from-2020-03-25-14-05-08.png)
