@@ -8,9 +8,10 @@ export default theme=>({
         display: 'flex',
         flexDirection: 'column',
         height: '85vh',
-        [theme.breakpoints.up('lg')]:{
-            maxWidth:'20%'
-        }
+    },
+    map:{
+        height:'85vh',
+        width:'100%'
     },
     middlePortion:{
         display: 'flex',

@@ -18,7 +18,7 @@ class Dashboard extends Component{
                     <Grid item md={3} lg={3} className={classes.middlePortion}>
                         <SelectedLocationData />
                     </Grid>
-                    <Grid item md={6} lg={6}>
+                    <Grid item md={6} lg={6} className={classes.map}>
                         <Map />
                     </Grid>
                 </Grid>
