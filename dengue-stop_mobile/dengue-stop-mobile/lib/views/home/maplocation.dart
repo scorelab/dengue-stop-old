@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/report/mainfile.dart';
 import 'package:flutter_app/views/home/activities.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:geolocation/geolocation.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
@@ -19,14 +19,13 @@ class _MapNavigationState extends State<MapNavigation> {
   String _mapStyle;
   double zoomVal=5.0;
 
+  final Map<String, Marker> _markers = {};
+
   void initState(){
     super.initState();
     rootBundle.loadString('styles/map_style.txt').then((string) {
       _mapStyle = string;
     });
-    Geolocation.currentLocation(
-
-    );
   }
   
   
@@ -56,6 +55,21 @@ class _MapNavigationState extends State<MapNavigation> {
           icon: Icon(FontAwesomeIcons.plusSquare),
       ),
     );
+  }
+
+  void _getLocation() async {
+    var currentLocation = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+
+    setState(() {
+      _markers.clear();
+      final marker = Marker(
+        markerId: MarkerId("curr_loc"),
+        position: LatLng(currentLocation.latitude, currentLocation.longitude),
+        infoWindow: InfoWindow(title: 'Your Location'),
+      );
+      _markers["Current Location"] = marker;
+    });
   }
 
   Widget _zoomminusfunction() {
@@ -135,7 +149,7 @@ class _MapNavigationState extends State<MapNavigation> {
     );
   }
 
-  Future<void> _getLocation(double lat,double long) async{
+  Future<void> _getlocation(double lat,double long) async{
     final GoogleMapController controller = await _controller;
     controller.animateCamera(
         CameraUpdate.newCameraPosition(CameraPosition(

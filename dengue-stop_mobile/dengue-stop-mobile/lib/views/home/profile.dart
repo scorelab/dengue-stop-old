@@ -259,19 +259,14 @@ class HealthInfo extends StatelessWidget {
                           ListTile(
                             contentPadding:
                             EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                            leading: Icon(Icons.my_location),
-                            title: Text("Location"),
-                            subtitle: Text("Colombo, Sri lanka"),
+                            leading: Icon(Icons.accessibility_new),
+                            title: Text("Age"),
+                            subtitle: Text("30"),
                           ),
                           ListTile(
-                            leading: Icon(Icons.email),
-                            title: Text("Email"),
-                            subtitle: Text("sahan@gmail.com"),
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.phone),
-                            title: Text("Phone"),
-                            subtitle: Text("+94 775365565"),
+                            leading: Icon(Icons.network_check),
+                            title: Text("BMI Level"),
+                            subtitle: Text("Normal"),
                           ),
                           ListTile(
                             leading: Icon(Icons.person),

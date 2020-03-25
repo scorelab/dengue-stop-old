@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/services/auth.dart';
 import 'package:flutter_app/shared/loading.dart';
 
+import 'dart:async';
+
 class SignIn extends StatefulWidget {
   final Function toggleView;
   SignIn({this.toggleView});
@@ -39,7 +41,9 @@ class _SignInState extends State<SignIn> {
           )
         ],
       ),
-      body: Container(
+      body: SingleChildScrollView(
+
+      child:Container(
         padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0),
         child: Form(
           key: _formKey,
@@ -52,8 +56,8 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 20.0,),
               Image(
-                image: AssetImage('img/02-512.png'),
-                height: 80.0,
+                image: AssetImage("02-512.png"),
+                height: 100.0,
                 width: 100.0,
               ),
               SizedBox(height: 20.0,),
@@ -121,6 +125,7 @@ class _SignInState extends State<SignIn> {
             ],
           ),
         )
+      ),
       ),
     );
   }
