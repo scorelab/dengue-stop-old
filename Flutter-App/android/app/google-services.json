@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "402013291968",
+    "firebase_url": "https://dengue-stop-e74b4.firebaseio.com",
+    "project_id": "dengue-stop-e74b4",
+    "storage_bucket": "dengue-stop-e74b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402013291968:android:abc78cf566c04f9a183425",
+        "android_client_info": {
+          "package_name": "com.scorelab.denguestop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402013291968-t0hpq04d14mnudppg3mjem4aam0112ik.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scorelab.denguestop",
+            "certificate_hash": "97f69b3bb7064bbaa64b849b2727a7fa9b5c8c82"
+          }
+        },
+        {
+          "client_id": "402013291968-cfh6oosnpsfqrua776mu4ae1b6prlrtf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCocAiWrtbqRYR8_J1-VJZjXFBZHQlrg1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402013291968-cfh6oosnpsfqrua776mu4ae1b6prlrtf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
