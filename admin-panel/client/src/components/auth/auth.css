@@ -1,0 +1,40 @@
+ul {
+    display: flex;
+    min-height: 10vh;
+    width: 100%;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    margin: 20px;
+    padding: 20px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.highlight {
+    text-decoration: underline;
+    color: #222;
+}
+
+.main {
+    width: 40vw;
+    margin-top: 50px;
+}
+
+.nav {
+    text-align: center
+}
+
+.nav img {
+    height: 50px;
+    width: 50px;
+}
