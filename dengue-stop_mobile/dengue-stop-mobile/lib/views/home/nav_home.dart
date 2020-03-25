@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_app/report/mainfile.dart';
 import 'package:flutter_app/services/auth.dart';
 import 'package:flutter_app/views/home/blog.dart';
-import 'package:flutter_app/views/home/chart.dart';
 import 'package:flutter_app/views/home/dashboard.dart';
 import 'package:flutter_app/views/home/map.dart';
 import 'package:flutter_app/views/home/maplocation.dart';

@@ -85,11 +85,11 @@ class _MapNavigationState extends State<MapNavigation> {
 
   Future<void> _minus(double zoomVal) async {
     final GoogleMapController controller = await _controller;
-    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(40.712776, -74.005974), zoom: zoomVal)));
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(6.7897, 79.8913), zoom: zoomVal)));
   }
   Future<void> _plus(double zoomVal) async {
     final GoogleMapController controller = await _controller;
-    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(40.712776, -74.005974), zoom: zoomVal)));
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(6.7897, 79.8913), zoom: zoomVal)));
   }
 
   Widget _googleMap(BuildContext context){

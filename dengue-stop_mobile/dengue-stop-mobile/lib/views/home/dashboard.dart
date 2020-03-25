@@ -1,10 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/home/maplocation.dart';
+import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class DashboardTwoPage extends StatelessWidget {
-  static final String path = "lib/src/pages/dashboard/dash2.dart";
   final TextStyle whiteText = TextStyle(color: Colors.white);
+  DashboardTwoPage({Key key, this.title}) : super(key: key);
+
+
+  bool animate;
+
+  var data = [0.0,2.0, 5.0, 8.0, 10.0, 11.0, 10.0, 10.5, 9.0, 2.5, 0.0, 0.0];
+  var data1 = [0.0,2.0,5.5,7.0,10.5,11.0,0.8,1.0,2.0,3.0,3.2];
+
+  List<charts.Series> seriesList;
+
+  List<CircularStackEntry> circularData = <CircularStackEntry>[
+    new CircularStackEntry(
+      <CircularSegmentEntry>[
+        new CircularSegmentEntry(5.0, Color(0xff4285F4), rankKey: 'R'),
+        new CircularSegmentEntry(60.0, Color(0xfff3af00), rankKey: 'H'),
+        new CircularSegmentEntry(20.0, Color(0xffec3337), rankKey: 'C'),
+        new CircularSegmentEntry(4.0, Color(0xff40b24b), rankKey: 'D'),
+      ],
+      rankKey: 'Distributions',
+    ),
+  ];
+
+
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,8 +42,13 @@ class DashboardTwoPage extends StatelessWidget {
         centerTitle: true,
         actions: <Widget>[
           IconButton(icon: Icon(
-              FontAwesomeIcons.search),
+              FontAwesomeIcons.mapMarked),
+              tooltip: 'View Map',
               onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MapNavigation()));
             //
           }),
         ],
@@ -34,26 +65,12 @@ class DashboardTwoPage extends StatelessWidget {
         children: <Widget>[
           _buildHeader(),
           const SizedBox(height: 10.0),
-          Container(
-            padding: EdgeInsets.all(10.0),
-            child: FlatButton(
-              color: Colors.green,
-              textColor: Colors.white,
-              padding: EdgeInsets.all(8.0),
-              splashColor: Colors.blueAccent,
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MapNavigation()));
-              },
-              child: Text(
-                "View Map Dashboard",
-                style: TextStyle(fontSize: 18.0),
-              ),
-            ),
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: mychart1Items("Patient Growth Day by Day","102","+90.9% down"),
           ),
           const SizedBox(height: 10.0,),
+
           Row(
             children: <Widget>[
               Expanded(
@@ -129,7 +146,7 @@ class DashboardTwoPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10.0),
                     Container(
-                      height: 120,
+                      height: 100,
                       color: Colors.orange,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,7 +186,7 @@ class DashboardTwoPage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 120,
+                      height: 100,
                       color: Colors.red,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -277,8 +294,15 @@ class DashboardTwoPage extends StatelessWidget {
             ],
           ),
           SizedBox(height: 10.0,),
-          Text('demo'),
-
+          Text('Other Statistics',style: TextStyle(fontSize: 20.0,),),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: myCircularItems("Patient types","Confirmed"),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+//            child: newChart(),
+          ),
         ],
       ),
     );
@@ -314,11 +338,166 @@ class DashboardTwoPage extends StatelessWidget {
               Text(
                 'Last Update : 18th March 2020',
                 style: TextStyle(color: Colors.white,fontSize: 16.0),
-              )
+              ),
             ],
           ),
         )
       ],
     );
   }
+
+  //charts
+  Material myCircularItems(String title, String subtitle){
+    return Material(
+      color: Colors.white,
+      elevation: 14.0,
+      borderRadius: BorderRadius.circular(24.0),
+      shadowColor: Color(0x802196F3),
+      child: Center(
+        child:Padding(
+          padding: EdgeInsets.all(3.0),
+          child: Row(
+            mainAxisAlignment:MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                mainAxisAlignment:MainAxisAlignment.center,
+                children: <Widget>[
+
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child:Text(title,style:TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.blueAccent,
+                    ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.all(2.0),
+                    child:Text(subtitle,style:TextStyle(
+                      fontSize: 20.0,
+                    ),),
+                  ),
+
+                  Padding(
+                    padding:EdgeInsets.all(2.0),
+                    child:AnimatedCircularChart(
+                      size: const Size(150.0, 150.0),
+                      initialChartData: circularData,
+                      chartType: CircularChartType.Pie,
+                    ),
+                  ),
+
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  Material mychart1Items(String title, String priceVal,String subtitle) {
+    return Material(
+      color: Colors.white,
+      elevation: 14.0,
+      borderRadius: BorderRadius.circular(24.0),
+      shadowColor: Color(0x802196F3),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+
+                  Padding(
+                    padding: EdgeInsets.all(1.0),
+                    child: Text(title, style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.blueAccent,
+                    ),),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.all(1.0),
+                    child: Text(priceVal, style: TextStyle(
+                      fontSize: 30.0,
+                    ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(1.0),
+                    child: Text(subtitle, style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.blueGrey,
+                    ),),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.all(1.0),
+                    child: new Sparkline(
+                      data: data,
+                      lineColor: Color(0xffff6101),
+                      pointsMode: PointsMode.all,
+                      pointSize: 8.0,
+                    ),
+                  ),
+
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Material newChart(){
+    return Material(
+        child: charts.TimeSeriesChart(seriesList,
+            animate: animate,
+            primaryMeasureAxis: new charts.NumericAxisSpec(
+                renderSpec: charts.GridlineRendererSpec(
+                    lineStyle: charts.LineStyleSpec(
+                      dashPattern: [4, 4],
+                    )))),
+    );
+  }
+
+
+  static List<charts.Series<MyRow, DateTime>> _createSampleData() {
+    final data = [
+      new MyRow(new DateTime(2017, 9, 25), 6),
+      new MyRow(new DateTime(2017, 9, 26), 8),
+      new MyRow(new DateTime(2017, 9, 27), 6),
+      new MyRow(new DateTime(2017, 9, 28), 9),
+      new MyRow(new DateTime(2017, 9, 29), 11),
+      new MyRow(new DateTime(2017, 9, 30), 15),
+      new MyRow(new DateTime(2017, 10, 01), 25),
+      new MyRow(new DateTime(2017, 10, 02), 33),
+      new MyRow(new DateTime(2017, 10, 03), 27),
+      new MyRow(new DateTime(2017, 10, 04), 31),
+      new MyRow(new DateTime(2017, 10, 05), 23),
+    ];
+
+    return [
+      new charts.Series<MyRow, DateTime>(
+        id: 'Cost',
+        domainFn: (MyRow row, _) => row.timeStamp,
+        measureFn: (MyRow row, _) => row.cost,
+        data: data,
+      )
+    ];
+  }
+}
+
+/// Sample time series data type.
+class MyRow {
+  final DateTime timeStamp;
+  final int cost;
+
+  MyRow(this.timeStamp, this.cost);
 }
