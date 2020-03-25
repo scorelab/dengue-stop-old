@@ -2,7 +2,7 @@
 
 Clone the repository:
 
-#### `git clone https://github.com/saranrajshri/dengue-stop.git `
+`git clone https://github.com/saranrajshri/dengue-stop.git `
 
 Enter into the client folder
 
