@@ -12,7 +12,7 @@ function SelectedLocationData(props){
     return(
         <div className={classes.LocationDataWrapper}>
             <Typography variant="subtitle2" >Jammu & Kashmir</Typography>
-            <Details total="387" active={345} recovered={290} death={24} />            
+            <Details total="128" active={114} recovered={12} death={2} />            
             <Typography variant="h6">News</Typography>
                 <div className={classes.newsContainer}>
                     <News />
