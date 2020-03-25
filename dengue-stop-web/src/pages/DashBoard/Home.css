@@ -1,0 +1,48 @@
+
+.wrapper{
+    height: 700px;
+}
+.sideBar{
+    background-color: #3e3762;
+    padding:20px;
+}
+.sideBar .nav-link.active{
+    background-color: #3e3762 !important;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif ;
+}
+.sideBar .nav-link{
+    color:#7161b3
+
+}
+.sideBar .smallText{
+    color:#7161b3;
+    font-weight: bold;
+    margin-left:15px;
+    font-size:15px
+}
+.tabIcon{
+    margin-right:15px;
+}
+.cardHeader{
+    background-color: #7161b3;
+    padding:10px;
+    color:#fff
+}
+.backGroundDanger{
+    background-color: #f5765b;
+}
+.whiteHeader{
+    background-color: #efefef;
+    height:50px;
+}
+.headerText{
+    margin-top:8px;
+    margin-left:20px;
+}
+.storeRoomHeader{
+    background-color: #3e3762;
+}
+.overflow-y-hidden{
+    padding-right:20px;
+}
