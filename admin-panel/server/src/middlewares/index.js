@@ -17,6 +17,7 @@ const errorHandler = (err, req, res, next) => {
   });
 };
 
+// eslint-disable-next-line no-unused-vars
 const isAuthenticated = (req, res, next) => {
   const authHeader = req.get('Authorization');
   if (!authHeader) {

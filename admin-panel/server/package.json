@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "client": "cd ../client && npm start",
+    "server": "nodemon src/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "eslint src/"
   },
   "author": "",
@@ -17,12 +19,14 @@
     "express": "^4.17.1",
     "helmet": "^3.21.3",
     "jsonwebtoken": "^8.5.1",
+    "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.9.3",
     "morgan": "^1.9.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",

@@ -32,7 +32,9 @@ require('./services/passport')(passport);
 app.use(morgan('common'));
 // For adding secure headers
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 app.use(express.json())
 
 // Routes

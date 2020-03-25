@@ -55,7 +55,7 @@ router.post('/login', (req, res) => {
               userId: user._id,
               username: user.username,
             };
-            // Token expires in and 1hr
+            // Token expires in an hour
             jwt.sign(payload, secret, { expiresIn: 36000 }, (err, token) => {
               if (err) return res.status(500).json({
                 error: 'Error signing token!',
@@ -65,6 +65,7 @@ router.post('/login', (req, res) => {
                 success: true,
                 token: `Bearer ${token}`,
                 userId: user._id,
+                isAdmin: user.admin,
               });
             });
           } else return res.status(400).json({ error: 'Incorrect password!', })
