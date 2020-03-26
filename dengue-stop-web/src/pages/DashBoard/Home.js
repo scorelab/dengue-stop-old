@@ -3,15 +3,7 @@ import React from "react";
 import { Row, Col, Nav, Tab } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlusCircle,
-  faChartBar,
-  faBoxOpen,
-  faStreetView,
-  faMoneyBillAlt,
-  faInfoCircle,
-  faShoppingCart
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 import "./Home.css";
 
@@ -19,15 +11,16 @@ import Header from "../../components/Header";
 
 // tabs
 import OverView from "./Tabs/Overview";
+import Reports from "./Tabs/Reports";
 class Home extends React.Component {
   render() {
     return (
       <div>
         <Header />
         <div>
-          <Tab.Container id="left-tabs-example" defaultActiveKey="overview">
+          <Tab.Container id="left-tabs-example" defaultActiveKey="reports">
             <Row className="wrapper">
-              <Col md={3} className="sideBar">
+              <Col md={2} className="sideBar">
                 <p className="smallText">NAVIGATION</p>
                 <Nav variant="pills" className="flex-column">
                   <Nav.Item>
@@ -40,7 +33,7 @@ class Home extends React.Component {
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="postProducts">
+                    <Nav.Link eventKey="reports">
                       <FontAwesomeIcon
                         icon={faPlusCircle}
                         className="tabIcon"
@@ -59,13 +52,13 @@ class Home extends React.Component {
                   </Nav.Item>
                 </Nav>
               </Col>
-              <Col md={9} className="pr-4">
+              <Col md={10} className="pr-4">
                 <Tab.Content>
                   <Tab.Pane eventKey="overview">
                     <OverView />
                   </Tab.Pane>
-                  <Tab.Pane eventKey="postProducts">
-                    {/* <PostProducts /> */}
+                  <Tab.Pane eventKey="reports">
+                    <Reports />
                   </Tab.Pane>
                   <Tab.Pane eventKey="storeRoom">
                     {/* <StoreRoom /> */}
