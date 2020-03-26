@@ -7,6 +7,8 @@ const fs=require('fs');
 
 //API ROUTES
 const Auth=require('./routes/api/Auth');
+const Report=require('./routes/api/Report');
+
 
 
 const app = express();
@@ -52,6 +54,8 @@ mongoose
 
 // Importing all the routes/api
 app.use("/auth",Auth);
+app.use("/report",Report);
+
 
 //Basic Checking of Server
 app.get("/", (req, res) => {

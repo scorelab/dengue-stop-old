@@ -48,7 +48,7 @@ var ReportSchema = new Schema({
   },
   
   Symptoms: {
-    type: Array,
+    type: JSON,
     required:true,
     default: ""
   },
