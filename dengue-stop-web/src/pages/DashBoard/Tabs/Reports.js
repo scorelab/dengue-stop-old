@@ -1,9 +1,42 @@
 import React from "react";
 
-import { Row, Col, Badge, ListGroup } from "react-bootstrap";
+import { Row, Col, Badge, ListGroup, Button } from "react-bootstrap";
 import LineGraph from "../components/LineGraph";
+import PieChart from "../components/PieChart";
+import MapModal from "../components/MapModal";
 
 class Reports extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isPieChartOpen: false,
+      isMapOpen: false,
+      isLineGraphOpen: true
+    };
+  }
+
+  showPieChart = () => {
+    this.setState({
+      isPieChartOpen: true,
+      isMapOpen: false,
+      isLineGraphOpen: false
+    });
+  };
+
+  showLineGraph = () => {
+    this.setState({
+      isPieChartOpen: false,
+      isMapOpen: false,
+      isLineGraphOpen: true
+    });
+  };
+
+  showMap = () => {
+    this.setState({
+      isMapOpen: true
+    });
+  };
+
   render() {
     return (
       <div className="mt-2 ">
@@ -12,7 +45,17 @@ class Reports extends React.Component {
           <Col md={3}>
             <div className="card">
               <div className="cardHeader cardHeader">
-                <h4>Total Cases</h4>
+                <Row>
+                  <Col md={9} className="d-flex  align-self-center">
+                    <h4>Total Cases </h4>
+                  </Col>
+                  <Col
+                    md={3}
+                    className="d-flex justify-content-end align-self-center"
+                  >
+                    <Badge variant="primary">200</Badge>
+                  </Col>
+                </Row>
               </div>
               <div className="cardBody p-2">
                 <Row>
@@ -84,9 +127,43 @@ class Reports extends React.Component {
 
           {/* right side content */}
           <Col md={9}>
-            <LineGraph />
+            <Row>
+              <Col className="d-flex justify-content-end">
+                {this.state.isLineGraphOpen ? (
+                  <Button
+                    variant="primary"
+                    className="mr-2"
+                    size={"sm"}
+                    onClick={this.showPieChart}
+                  >
+                    Show Pie Chart
+                  </Button>
+                ) : null}
+                {this.state.isPieChartOpen ? (
+                  <Button
+                    variant="primary"
+                    className="mr-2"
+                    size={"sm"}
+                    onClick={this.showLineGraph}
+                  >
+                    Show Line Graph
+                  </Button>
+                ) : null}
+                <Button variant="info" size={"sm"} onClick={this.showMap}>
+                  Show in map
+                </Button>
+              </Col>
+            </Row>
+            {this.state.isLineGraphOpen ? <LineGraph /> : null}
+            {this.state.isPieChartOpen ? <PieChart /> : null}
           </Col>
         </Row>
+
+        {/* Map Modal */}
+        <MapModal
+          isOpen={this.state.isMapOpen}
+          handleClose={e => this.setState({ isMapOpen: false })}
+        />
       </div>
     );
   }
