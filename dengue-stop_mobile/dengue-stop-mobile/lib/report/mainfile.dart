@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_app/screens/dashboard.dart';
 import 'package:flutter_app/services/auth.dart';
 import 'package:flutter_app/views/home/map.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -176,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => TaskScreen(Task('', '', '', '', '')),
+                  builder: (context) => Dashboard(),
                   fullscreenDialog: true),
             );
           },
