@@ -4,6 +4,7 @@ const bodyparser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const key = require("../config/DBSetup").secret;
+const isValidId=require('../helpers/Routine').isValidId;
 
 router.use(bodyparser.urlencoded({ extended: false }));
 router.use(bodyparser.json());
@@ -17,7 +18,7 @@ exports.Landing=(req,res)=>{
 
 exports.addReport=(req,res)=>{
 
-    if (req.body.ReporterId.match(/^[0-9a-fA-F]{24}$/)) {
+    if (isValidId(req.body.ReporterId)) {
 
         let reportPara={}
         let newAdd={}
