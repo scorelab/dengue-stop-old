@@ -1,0 +1,43 @@
+.navbar{
+    background-color: #806ecb;
+}
+.headerIconWrapper{
+    background-color: #9d91d6;
+    padding:10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.headerIcon{
+    color:#fff;
+}
+.searchBar{
+    background-color: #9c91d5 !important;
+    border :1px solid #9c91d5 !important;
+    border-radius:20px !important;
+    color:#fff !important;
+}
+.searchBar:focus{
+    background-color: #9c91d5 !important;
+    color:#fff !important;
+    text-indent: 10px !important;
+}
+.searchBar::placeholder{
+    color: #efefef !important;
+}
+.supplierName{
+    color:#fff;
+    font-size: 16px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:6px;
+}
+.brandLogo{
+    color:#f5f4fb;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    
+}
+.headerIcon{
+    cursor: pointer;
+}

@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Map using View Bounds</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>    
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+  </head>
+  <body id="markers-on-the-map">
+    <div class="page-header">
+    </div>
+    <div id="map"></div>
+   
+    <script type="text/javascript" >
+    /**
+ * Moves the map to display over Boston using viewBounds
+ *
+ * @param  {H.Map} map      A HERE Map instance within the application
+ */
+function setMapViewBounds(map){
+//   var bbox = new H.geo.Rect(42.3736,-71.0751,42.3472,-71.0408);
+//   map.getViewModel().setLookAtData({
+//     bounds: bbox
+//   });
+}
+
+/**
+ * Boilerplate map initialization code starts below:
+ */
+
+//Step 1: initialize communication with the platform
+// In your own code, replace variable window.apikey with your own apikey
+var platform = new H.service.Platform({
+  apikey: "Omfb3D_6gnrF9h7r_TsQAyFJrj47fZcbqIeN41Uxxxw".toString(),
+});
+var defaultLayers = platform.createDefaultLayers();
+
+//Step 2: initialize a map - this map is centered over Europe
+var map = new H.Map(document.getElementById('map'),
+  defaultLayers.vector.normal.map,{
+  center: {lat:13.5892, lng:80.0283},
+  zoom: 8,
+  pixelRatio: window.devicePixelRatio || 1
+});
+// add a resize listener to make sure that the map occupies the whole container
+window.addEventListener('resize', () => map.getViewPort().resize());
+
+//Step 3: make the map interactive
+// MapEvents enables the event system
+// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+// Create the default UI components
+var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+// Now use the map as required...
+window.onload = function () {
+  setMapViewBounds(map);
+}
+var circle=new H.map.Circle(
+    // The central point of the circle
+    {lat:13.5892, lng:80.0283},
+    // The radius of the circle in meters
+    10000,
+    {
+      style: {
+        strokeColor: '#388dfd', // Color of the perimeter
+        lineWidth: 2,
+        fillColor: 'rgba(249, 198, 196,0.5)',
+      }
+    }
+  )
+
+map.addObject(circle);
+    </script>
+  </body>
+</html>
