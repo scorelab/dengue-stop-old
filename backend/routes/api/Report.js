@@ -31,4 +31,14 @@ router.get("/landing", reportController.Landing);
 router.post("/addreport",reportController.addReport);
 
 
+router.post("/editreport",reportController.editReport);
+
+router.post("/updatestatus",reportController.updateReportStatus);
+
+
+router.get("/getreport/:rid",reportController.getParticularReport);
+
+
+
+
 module.exports = router;

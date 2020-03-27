@@ -48,7 +48,7 @@ exports.addReport=(req,res)=>{
                 if(r)
                 {
 
-                    res.json({status:"SUCCESS",message:"Successfully updated report",Payload:r});
+                    res.json({status:"SUCCESS",message:"Successfully uploaded report",Payload:r});
 
                 }
                 else{
@@ -68,5 +68,103 @@ exports.addReport=(req,res)=>{
 
         res.json({status:"ERROR",message:"Not a valid reporter ID"});
     }
+
+}
+
+
+exports.getParticularReport=(req,res)=>{
+
+    if(isValidId(req.params.rid))
+    {
+        Report.find({_id:req.params.rid})
+    .then(
+        r=>{
+                if(r)
+                {
+                    res.json({status:"SUCCESS",Payload:r});
+                }
+                else{
+                    res.json({status:"ERROR",message:"Error Fetching Report"});
+                }
+        }
+    )
+    .catch(err=>{
+        res.json(err);
+    })
+
+    }else{
+
+        res.json({status:"ERROR",message:"Not a valid report ID"});
+
+    }
+
+}
+
+exports.editReport=(req,res)=>{
+
+    if (isValidId(req.body.ReportID)) {
+
+        let updateParamters={}
+        let newAdd={}
+        newAdd.FlatNo=req.body.FlatNo;
+        newAdd.Locality=req.body.Locality;
+        newAdd.City=req.body.City;
+        newAdd.Pincode=req.body.Pincode;
+        newAdd.State=req.body.State;
+        newAdd.Country=req.body.Country;
+
+        //Report Model Paramters
+        updateParamters.Address=newAdd;
+        updateParamters.UIDNo=req.body.UIDNo;
+        updateParamters.PatientFirstName=req.body.PatientFirstName;
+        updateParamters.PatientSecondName=req.body.PatientSecondName;
+        updateParamters.Symptoms=JSON.parse(req.body.Symptoms);
+        updateParamters.Lat=req.body.Lat;
+        updateParamters.Log=req.body.Log;
+        updateParamters.ReportedBy=req.body.ReportedBy;
+        updateParamters.ReporterId=req.body.ReporterId;
+        updateParamters.NearestFC=req.body.NearestFC;
+
+        Report.findByIdAndUpdate({_id:req.body.ReportID},{$set:updateParamters})
+        .then(
+            r=>{
+                if(r)
+                res.json({status:"SUCCESS",message:"Successfully updated details"});
+                else
+                res.json({status:"ERROR",message:"Error updating report"});
+            }   
+        )
+        .catch(err=>{res.json(err)})
+
+    }
+    else{
+        res.json({status:"ERROR",message:"Not a valid report ID"});
+    }
+
+}
+
+
+exports.updateReportStatus=(req,res)=>{
+
+    if (isValidId(req.body.ReportID)) {
+
+        Report.findByIdAndUpdate({_id:req.body.ReportID},{Status:req.body.Status})
+        .then(
+            r=>{
+                if(r)
+                res.json({status:"SUCCESS",message:"Successfully updated status"});
+                else
+                res.json({status:"ERROR",message:"Error updating report status"});
+            }   
+        )
+        .catch(err=>{res.json(err)})
+
+
+
+    }
+    else{
+        res.json({status:"ERROR",message:"Not a valid report ID"});
+    }
+
 
 }

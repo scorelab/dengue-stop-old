@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var ReportSchema = new Schema({
+  Status:{
+    type:String,
+    default:"Ongoing"
+  },
     UIDNo: {
     type: String,
     default: ""
