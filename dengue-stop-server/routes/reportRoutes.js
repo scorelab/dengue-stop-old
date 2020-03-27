@@ -6,10 +6,14 @@ const Report = require("../models/ReportSchema");
 // Add a new report
 router.post("/addNewReport", (req, res) => {
   var data = {
-    userName: req.body.userName,
+    reportedBy: req.body.userName,
+    reporterID: req.body.reporterID,
     locationName: req.body.locationName,
     country: req.body.country,
-    message: req.body.message
+    message: req.body.message,
+    coordinates: req.body.coordinates,
+    symptoms: req.body.symptoms,
+    patientName: req.body.patientName
   };
   var report = new Report(data);
   report
