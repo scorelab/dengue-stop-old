@@ -11,14 +11,16 @@ import Header from "../../components/Header";
 
 // tabs
 import OverView from "./Tabs/Overview";
-import Reports from "./Tabs/Reports";
+import ReportAnalysis from "./Tabs/ReportAnalysis";
+import AllReports from "./Tabs/AllReports";
+
 class Home extends React.Component {
   render() {
     return (
       <div>
         <Header />
         <div>
-          <Tab.Container id="left-tabs-example" defaultActiveKey="reports">
+          <Tab.Container id="left-tabs-example" defaultActiveKey="allReports">
             <Row className="wrapper">
               <Col md={2} className="sideBar">
                 <p className="smallText">NAVIGATION</p>
@@ -33,21 +35,21 @@ class Home extends React.Component {
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="reports">
+                    <Nav.Link eventKey="analysis">
                       <FontAwesomeIcon
                         icon={faPlusCircle}
                         className="tabIcon"
                       />
-                      Reports
+                      Report Analysis
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="calculateTripCost">
+                    <Nav.Link eventKey="allReports">
                       <FontAwesomeIcon
                         icon={faPlusCircle}
                         className="tabIcon"
                       />
-                      Notifications
+                      All Reports
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>
@@ -57,11 +59,11 @@ class Home extends React.Component {
                   <Tab.Pane eventKey="overview">
                     <OverView />
                   </Tab.Pane>
-                  <Tab.Pane eventKey="reports">
-                    <Reports />
+                  <Tab.Pane eventKey="analysis">
+                    <ReportAnalysis />
                   </Tab.Pane>
-                  <Tab.Pane eventKey="storeRoom">
-                    {/* <StoreRoom /> */}
+                  <Tab.Pane eventKey="allReports">
+                    <AllReports />
                   </Tab.Pane>
                 </Tab.Content>
               </Col>

@@ -5,7 +5,7 @@ import LineGraph from "../components/LineGraph";
 import PieChart from "../components/PieChart";
 import MapModal from "../components/MapModal";
 
-class Reports extends React.Component {
+class ReportAnalysis extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -168,4 +168,4 @@ class Reports extends React.Component {
     );
   }
 }
-export default Reports;
+export default ReportAnalysis;
