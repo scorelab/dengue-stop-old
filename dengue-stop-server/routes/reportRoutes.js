@@ -22,4 +22,15 @@ router.post("/addNewReport", (req, res) => {
     });
 });
 
+// get all reports
+router.get("/getAllReports", (req, res) => {
+  Report.find({})
+    .then(response => {
+      res.send(response);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
 module.exports = router;
