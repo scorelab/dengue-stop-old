@@ -168,3 +168,25 @@ exports.updateReportStatus=(req,res)=>{
 
 
 }
+
+exports.deleteReport=(req,res)=>{
+
+
+    if (isValidId(req.body.ReportID)) {
+
+        Report.findByIdAndDelete({_id:req.body.ReportID})
+        .then(
+            r=>{
+                if(r)
+                res.json({status:"SUCCESS",message:"Successfully deleted report"});
+                else
+                res.json({status:"ERROR",message:"Error deleting report"});
+            }   
+        )
+        .catch(err=>{res.json(err)})
+    }
+    else{
+        res.json({status:"ERROR",message:"Not a valid report ID"});
+    }
+
+}

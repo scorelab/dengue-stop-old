@@ -28,7 +28,7 @@ router.get("/landing", reportController.Landing);
 
 
 
-router.post("/addreport",reportController.addReport);
+router.delete("/deletereport",reportController.deleteReport);
 
 
 router.post("/editreport",reportController.editReport);
