@@ -1,25 +1,62 @@
-import React, { Component } from "./node_modules/react";
-import PropTypes from "./node_modules/prop-types";
-import { connect } from "./node_modules/react-redux";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import "./Dashboard.css";
+import TimelineIcon from "@material-ui/icons/Timeline";
+import FireplaceIcon from '@material-ui/icons/Fireplace';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import Button from "@material-ui/core/Button";
+import RedditIcon from '@material-ui/icons/Reddit';
+import EnhancedTable from "./Report"
+
 class Dashboard extends Component {
+  
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
-render() {
+
+  
+  render() {
     const { user } = this.props.auth;
-return (
+    return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
-            <h4>
+            <h5>
               <b>Hey there,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>DENGUE ADMIN PANEL</span> app 👏
-              </p>
-            </h4>
+            </h5>
+            <div > 
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-around"
+                }}
+              >
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<TimelineIcon />}
+                >
+                  Graph
+                </Button>
+                <Button variant="contained" color="secondary" startIcon = {<FireplaceIcon/>}>
+                  HeatMaps
+                </Button>
+                <Button variant="contained" color="primary" startIcon = {<AssessmentIcon/>}>
+                  Analysis
+                </Button>
+                <Button variant="contained" color="secondary" startIcon = {<RedditIcon/>}>
+                  Prediction
+                </Button>
+              </div>
+              <h4 id="title">Recent reported cases</h4>
+            
+              <div style = {{width: "1000px"}}><EnhancedTable/></div>
+              
+            </div>
             <button
               style={{
                 width: "150px",
@@ -38,6 +75,7 @@ return (
     );
   }
 }
+
 Dashboard.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
@@ -45,7 +83,6 @@ Dashboard.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth
 });
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Dashboard);
+export default connect(mapStateToProps, { logoutUser })(Dashboard);
+
+
