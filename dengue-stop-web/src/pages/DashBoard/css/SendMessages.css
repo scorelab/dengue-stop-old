@@ -1,0 +1,52 @@
+.chatHeader{
+    background-color: #8e44ad;
+    padding:10px;
+    color:#fff;
+    padding-top:15px;
+}
+.chatBody{
+    height:350px;
+}
+.messageFrom {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-left: 18px;
+    background-color: #1abc9c;
+    width: 250px;
+    padding:10px;
+    color:#fff;
+    border-radius: 10px;
+    }
+.messageFrom:after{
+    position: absolute;
+    bottom: 20%;
+    height: 0;
+    width: 0;
+    left: -7.5%;
+    border: 10px solid transparent;
+    border-right-color: #1abc9c;
+    content: "";
+}
+.messageTo {
+    position: relative;
+    display: block;
+    float:right;
+    margin-top: 10px;
+    margin-right: 18px;
+    background-color: #3498db;
+    width: 250px;
+    padding:10px;
+    color:#fff;
+    border-radius: 10px;
+    }
+.messageTo:after{
+    position: absolute;
+    bottom: 20%;
+    height: 0;
+    width: 0;
+    left: 99%;
+    border: 10px solid transparent;
+    border-left-color: #3498db;
+    content: "";
+}
