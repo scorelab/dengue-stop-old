@@ -14,7 +14,8 @@ class SendReport extends React.Component {
           <Row>
             <Col>
               <p>
-                Patient Name : <span className="font-weight-bold">Hello</span>
+                Patient Name :{" "}
+                <span className="font-weight-bold">Sumalesh</span>
               </p>
             </Col>
             <Col>

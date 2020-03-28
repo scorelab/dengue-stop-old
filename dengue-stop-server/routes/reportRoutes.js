@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Report = require("../models/ReportSchema");
+const User = require("../models/UserSchema");
 
 // Add a new report
 router.post("/addNewReport", (req, res) => {
@@ -34,6 +35,22 @@ router.get("/getAllReports", (req, res) => {
     })
     .catch(err => {
       res.send(err);
+    });
+});
+
+// get a report by id
+router.get("/getReport/:reportID", (req, res) => {
+  var result = {};
+  Report.findOne({ _id: req.params.reportID })
+    .then(response => {
+      result = response;
+      result["status"] = "success";
+      res.send(result);
+    })
+    .catch(err => {
+      result = err;
+      result["status"] = "failed";
+      res.send(result);
     });
 });
 
