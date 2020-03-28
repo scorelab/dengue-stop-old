@@ -13,6 +13,7 @@ import Header from "../../components/Header";
 import OverView from "./Tabs/Overview";
 import ReportAnalysis from "./Tabs/ReportAnalysis";
 import AllReports from "./Tabs/AllReports";
+import SendMessages from "./Tabs/SendMessages";
 
 class Home extends React.Component {
   render() {
@@ -20,7 +21,7 @@ class Home extends React.Component {
       <div>
         <Header />
         <div>
-          <Tab.Container id="left-tabs-example" defaultActiveKey="allReports">
+          <Tab.Container id="left-tabs-example" defaultActiveKey="sendMessages">
             <Row className="wrapper">
               <Col md={2} className="sideBar">
                 <p className="smallText">NAVIGATION</p>
@@ -52,6 +53,15 @@ class Home extends React.Component {
                       All Reports
                     </Nav.Link>
                   </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="sendMessages">
+                      <FontAwesomeIcon
+                        icon={faPlusCircle}
+                        className="tabIcon"
+                      />
+                      Send Messages
+                    </Nav.Link>
+                  </Nav.Item>
                 </Nav>
               </Col>
               <Col md={10} className="pr-4">
@@ -64,6 +74,9 @@ class Home extends React.Component {
                   </Tab.Pane>
                   <Tab.Pane eventKey="allReports">
                     <AllReports />
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="sendMessages">
+                    <SendMessages />
                   </Tab.Pane>
                 </Tab.Content>
               </Col>
