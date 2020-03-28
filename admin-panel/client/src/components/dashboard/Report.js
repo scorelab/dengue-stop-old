@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,6 +13,7 @@ import RoomIcon from '@material-ui/icons/Room';
 import Button from "@material-ui/core/Button";
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import Location from "./Locations/Location"
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -46,20 +48,22 @@ const columns = [
   },
 ];
 
-function createData(id, name, age, gender, disease, location, notification) {
-    return { id,name, age, gender, disease, location, notification };
+function createData(id, name, age, gender, disease, location, notification,lat,lng) {
+    return { id,name, age, gender, disease, location, notification, lat, lng };
   }
   
-  const live = (<Button><RoomIcon/></Button>);
+
+
+  const live = (<Button ><RoomIcon /></Button>);
   const notify = (<Button><NotificationsActiveIcon/></Button>);
   const nonotify = (<Button><NotificationsOffIcon/></Button>);
 
 
 const rows = [
-    createData(1,'Anshika', 19, 'F', "Malaria", live, notify),
-    createData(2, "Abhay Katheria", 21, "M", "Dengue", live, nonotify),
-    createData(3,"Chitransh", 20, "M", "Dengue", live, notify),
-    createData(4, "Mithilesh", 22, "M", "Malaria", live, nonotify),
+    createData(1,'Anshika', 19, 'F', "Malaria", live, notify, 7.2906, 80.6337),
+    createData(2, "Abhay Katheria", 21, "M", "Dengue", live, nonotify, 6.9497, 80.7891),
+    createData(3,"Chitransh", 20, "M", "Dengue", live, notify, 6.0535, 80.2210),
+    createData(4, "Mithilesh", 22, "M", "Malaria", live, nonotify, 8.3114, 80.4037),
     createData(5, "Mithilesh", 22, "M", "Malaria", live, notify),
     createData(6, "Mithilesh", 22, "M", "Malaria", live, notify),
     createData(7, "Mithilesh", 22, "M", "Malaria", live, notify),

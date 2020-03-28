@@ -9,6 +9,7 @@
 	"dependencies": {
 		"@material-ui/core": "^4.9.7",
 		"@material-ui/icons": "^4.9.1",
+		"google-maps-react": "^2.0.2",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.46.1",
 		"react-native-firebase": "^2.0.3",

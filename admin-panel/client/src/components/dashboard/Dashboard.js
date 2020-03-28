@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -24,6 +25,7 @@ import FireplaceIcon from '@material-ui/icons/Fireplace';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import Button from "@material-ui/core/Button";
 import RedditIcon from '@material-ui/icons/Reddit';
+import EditLocationIcon from '@material-ui/icons/EditLocation';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EnhancedTable from "./Report"
 
@@ -95,7 +97,10 @@ const MiniDrawer = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const IconArray = [<TimelineIcon/>, <FireplaceIcon/>, <AssessmentIcon/>,<RedditIcon/>]
+
+  
+
+  const IconArray = [<TimelineIcon/>, <FireplaceIcon/>, <AssessmentIcon/>,<RedditIcon/>, <Link to = "/location"><EditLocationIcon/></Link>]
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -158,7 +163,7 @@ const MiniDrawer = (props) => {
         </div>
         <Divider />
         <List>
-          {['Graph', 'HeatMap', 'Ananlysis', 'Prediction'].map((text, index) => (
+          {['Graph', 'HeatMap', 'Ananlysis', 'Prediction', <Link to = "/location">MAP VIEW</Link>].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{IconArray[index] }</ListItemIcon>
               <ListItemText primary={text} />
@@ -187,7 +192,7 @@ const MiniDrawer = (props) => {
                   justifyContent: "space-around"
                 }}
               >
-                <Button
+              <Button
                   variant="contained"
                   color="primary"
                   startIcon={<TimelineIcon />}
@@ -205,12 +210,6 @@ const MiniDrawer = (props) => {
                 </Button>
               </div>
               <h4 id="title">Recent reported cases</h4>
-              {/* <table id="students">
-                <tbody>
-                  <tr>{this.renderTableHeader()}</tr>
-                  {this.renderTableData()}
-                </tbody>
-              </table> */}
               <div style = {{width: "1000px"}}><EnhancedTable/></div>
               
             </div>
