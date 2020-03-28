@@ -52,7 +52,7 @@ class OverView extends React.Component {
               {/* Report  */}
               {this.state.reports.slice(0, 4).map((val, index) => {
                 return (
-                  <div>
+                  <div key={index}>
                     <Row>
                       <Col>
                         <p>
@@ -92,7 +92,7 @@ class OverView extends React.Component {
               <hr />
               {this.state.reportsByLocation.map((val, index) => {
                 return (
-                  <div>
+                  <div key={index}>
                     <p>
                       <span className="font-weight-bold">{val.location}</span> :
                       <span className="font-weight-bold">

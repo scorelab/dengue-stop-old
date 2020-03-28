@@ -40,6 +40,5 @@ export default class LineGraph extends Component {
 
   componentDidMount() {
     const { datasets } = this.refs.chart.chartInstance.data;
-    console.log(datasets[0].data);
   }
 }
