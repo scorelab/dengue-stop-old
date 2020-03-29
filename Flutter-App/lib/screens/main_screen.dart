@@ -5,7 +5,7 @@ import 'package:dengue_stop/screens/report_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'chat_screen.dart';
-import 'map_screen.dart';
+import 'user_location_screen.dart';
 
 class MainScreen extends StatefulWidget {
   static const String id = "main";
@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
             ReportScreen(),
             PostScreen(),
             ChatScreen(),
-            MapScreen(),
+            UserLocationScreen(),
           ],
           onPageChanged: (int index) {
             setState(() {

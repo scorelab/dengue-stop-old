@@ -1,4 +1,4 @@
-import 'package:dengue_stop/screens/map_screen.dart';
+import 'package:dengue_stop/screens/user_location_screen.dart';
 import 'package:dengue_stop/screens/post_screen.dart';
 import 'package:dengue_stop/screens/report_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class DengueStop extends StatelessWidget {
         ReportScreen.id:(context) => ReportScreen(),
         PostScreen.id:(context) => PostScreen(),
         ChatScreen.id:(context) => ChatScreen(),
-        MapScreen.id:(context) => MapScreen(),
+        UserLocationScreen.id:(context) => UserLocationScreen(),
       },
 
     );

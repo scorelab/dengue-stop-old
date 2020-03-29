@@ -1,20 +1,24 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dengue_stop/components/dialog_box.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-class MapScreen extends StatefulWidget {
-  static const String id = "map";
+class UserLocationScreen extends StatefulWidget {
+  static const String id = "user_location";
 
   @override
-  _MapScreenState createState() => _MapScreenState();
+  _UserLocationScreenState createState() => _UserLocationScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _UserLocationScreenState extends State<UserLocationScreen> {
+
+  DialogBox _dialogBox = DialogBox();
+
   StreamSubscription _locationSubscription;
   Location _locationTracker = Location();
   Marker marker;
@@ -115,7 +119,7 @@ class _MapScreenState extends State<MapScreen> {
                 Navigator.pop(context);
               }),
         ],
-        title: Text('Map',
+        title: Text('Your Location',
             style: TextStyle(
               color: Colors.white,
             )),
@@ -143,6 +147,8 @@ class _MapScreenState extends State<MapScreen> {
               label: "Add Location",
               onTap: () {
                 addLocationToFierstore();
+                _dialogBox.information(
+                    context, 'Add Location', 'Your Location Added');
               }),
           SpeedDialChild(
               child: Icon(Icons.add_location),
@@ -150,7 +156,8 @@ class _MapScreenState extends State<MapScreen> {
               labelBackgroundColor: Colors.redAccent,
               label: "Remove Location",
               onTap: () {
-
+                _dialogBox.information(
+                    context, 'Remove Location', 'Sorry, this is not yet implemented');
               }),
         ],
       ),
