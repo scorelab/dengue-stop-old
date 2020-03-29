@@ -21,7 +21,7 @@ dependencies:
   location: ^2.3.5
   flutter_map: ^0.8.2
   flutter_speed_dial: ^1.2.5
-
+  fab_circular_menu: ^1.0.0
 
 dev_dependencies:
   flutter_test:

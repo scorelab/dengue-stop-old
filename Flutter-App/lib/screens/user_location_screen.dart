@@ -62,7 +62,7 @@ class _UserLocationScreenState extends State<UserLocationScreen> {
 
   void addLocationToFierstore() {
     Firestore.instance.collection('markers').add({
-      'coodrs': GeoPoint(location.latitude, location.longitude),
+      'coords': GeoPoint(location.latitude, location.longitude),
       'place': "user location"
     });
   }

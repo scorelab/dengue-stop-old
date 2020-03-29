@@ -66,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
             color: Colors.white,
           ),
           Icon(
-            Icons.report,
+            Icons.notifications,
             size: 20,
             color: Colors.white,
           ),
@@ -81,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
             color: Colors.white,
           ),
           Icon(
-            Icons.map,
+            Icons.my_location,
             size: 20,
             color: Colors.white,
           ),

@@ -1,3 +1,4 @@
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -10,7 +11,6 @@ class ReportScreen extends StatefulWidget {
 }
 
 class _ReportScreenState extends State<ReportScreen> {
-
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
 
@@ -51,28 +51,28 @@ class _ReportScreenState extends State<ReportScreen> {
             )),
         backgroundColor: Colors.blueAccent,
       ),
-      floatingActionButton: SpeedDial(
-      animatedIcon: AnimatedIcons.menu_close,
-      children: [
-        SpeedDialChild(
-            child: Icon(Icons.location_searching),
-            label: "Your Location",
-            onTap: () => print("p1")
-//                  () {
-//                getCurrentLocation();
-//              }
-        ),
-        SpeedDialChild(
-            child: Icon(Icons.add_location),
-            label: "Add Location",
-            onTap: () => print("p2")
-//                  () {
-//                addLocationToFierstore();
-//              }
-        ),
-      ],
-    ),
-
+      floatingActionButton: FabCircularMenu(children: <Widget>[
+        IconButton(
+            icon: Icon(Icons.local_hospital),
+            onPressed: () {
+              print('Health tips');
+            }),
+        IconButton(
+            icon: Icon(Icons.perm_media),
+            onPressed: () {
+              print('News');
+            }),
+        IconButton(
+            icon: Icon(Icons.fastfood),
+            onPressed: () {
+              print('Food and Nutrians');
+            }),
+        IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {
+              print('Favorite');
+            })
+      ]),
     );
   }
 }
