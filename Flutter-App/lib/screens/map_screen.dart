@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
@@ -18,6 +20,8 @@ class _MapScreenState extends State<MapScreen> {
   Marker marker;
   Circle circle;
   GoogleMapController _controller;
+
+  var location;
 
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(7.8731, 80.7718),
@@ -52,17 +56,22 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
+  void addLocationToFierstore() {
+    Firestore.instance.collection('markers').add({
+      'coodrs': GeoPoint(location.latitude, location.longitude),
+      'place': "user location"
+    });
+  }
+
   void getCurrentLocation() async {
     try {
       Uint8List imageData = await getMarker();
-      var location = await _locationTracker.getLocation();
-
+      location = await _locationTracker.getLocation();
       updateMarkerAndCircle(location, imageData);
 
       if (_locationSubscription != null) {
         _locationSubscription.cancel();
       }
-
       _locationSubscription =
           _locationTracker.onLocationChanged().listen((newLocalData) {
         if (_controller != null) {
@@ -72,6 +81,7 @@ class _MapScreenState extends State<MapScreen> {
                   target: LatLng(newLocalData.latitude, newLocalData.longitude),
                   tilt: 0,
                   zoom: 18.00)));
+
           updateMarkerAndCircle(newLocalData, imageData);
         }
       });
@@ -120,11 +130,30 @@ class _MapScreenState extends State<MapScreen> {
           _controller = controller;
         },
       ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.location_searching),
-          onPressed: () {
-            getCurrentLocation();
-          }),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        onOpen:(){
+          getCurrentLocation();
+        },
+        children: [
+          SpeedDialChild(
+              child: Icon(Icons.add_location),
+              backgroundColor: Colors.orange,
+              labelBackgroundColor: Colors.orangeAccent,
+              label: "Add Location",
+              onTap: () {
+                addLocationToFierstore();
+              }),
+          SpeedDialChild(
+              child: Icon(Icons.add_location),
+              backgroundColor: Colors.red,
+              labelBackgroundColor: Colors.redAccent,
+              label: "Remove Location",
+              onTap: () {
+
+              }),
+        ],
+      ),
     );
   }
 }

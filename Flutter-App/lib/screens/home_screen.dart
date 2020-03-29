@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:latlong/latlong.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = "home";
@@ -11,6 +15,30 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
+
+  List<Marker> allMarkers = [];
+
+  setMarkers() {
+    allMarkers.add(
+      Marker(
+        width: 45.0,
+        height: 45.0,
+        point: LatLng(5.9772833, 80.5087741),
+        builder: (context) => Container(
+          child: IconButton(
+            icon: Icon(Icons.location_on),
+            color: Colors.red,
+            iconSize: 45,
+            onPressed: () {
+              debugPrint("talp");
+            },
+          ),
+        ),
+      ),
+    );
+
+    return allMarkers;
+  }
 
   void getCurrentUser() async {
     try {
@@ -30,7 +58,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         leading: null,
         iconTheme: IconThemeData(
@@ -50,6 +77,51 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         backgroundColor: Colors.blueAccent,
       ),
+
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        children: [
+          SpeedDialChild(
+              child: Icon(Icons.location_searching),
+              label: "Your Location",
+              onTap: () => print("p1")
+//                  () {
+//                getCurrentLocation();
+//              }
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.add_location),
+              label: "Add Location",
+              onTap: () => print("p2")
+//                  () {
+//                addLocationToFierstore();
+//              }
+          ),
+        ],
+      ),
+
+
+      body: new FlutterMap(
+        options: new MapOptions(
+          center: LatLng(7.8731, 80.7718),
+//            zoom: 8.0,
+          zoom: 7.5,
+        ),
+        layers: [
+          new TileLayerOptions(
+            urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            subdomains: ['a', 'b', 'c'],
+//              urlTemplate:
+//              'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+//              subdomains: ['a', 'b', 'c'],
+//              tileProvider: CachedNetworkTileProvider(),
+          ),
+          MarkerLayerOptions(
+            markers: setMarkers(),
+          ),
+        ],
+      ),
+
     );
   }
 }

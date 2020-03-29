@@ -27,19 +27,17 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
-
   final PageController _pageController = PageController();
+
   @override
   void initState() {
     super.initState();
     getCurrentUser();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: PageView(
           controller: _pageController,
           children: <Widget>[
@@ -54,7 +52,6 @@ class _MainScreenState extends State<MainScreen> {
               _pageController.jumpToPage(index);
             });
           }),
-
 
       bottomNavigationBar: CurvedNavigationBar(
         color: Colors.blueAccent,

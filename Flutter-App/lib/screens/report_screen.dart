@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class ReportScreen extends StatefulWidget {
   static const String id = "report";
@@ -50,6 +51,28 @@ class _ReportScreenState extends State<ReportScreen> {
             )),
         backgroundColor: Colors.blueAccent,
       ),
+      floatingActionButton: SpeedDial(
+      animatedIcon: AnimatedIcons.menu_close,
+      children: [
+        SpeedDialChild(
+            child: Icon(Icons.location_searching),
+            label: "Your Location",
+            onTap: () => print("p1")
+//                  () {
+//                getCurrentLocation();
+//              }
+        ),
+        SpeedDialChild(
+            child: Icon(Icons.add_location),
+            label: "Add Location",
+            onTap: () => print("p2")
+//                  () {
+//                addLocationToFierstore();
+//              }
+        ),
+      ],
+    ),
+
     );
   }
 }
