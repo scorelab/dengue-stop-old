@@ -23,6 +23,7 @@ import { logoutUser } from "../../actions/authActions";
 import TimelineIcon from "@material-ui/icons/Timeline";
 import FireplaceIcon from '@material-ui/icons/Fireplace';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import PersonIcon from '@material-ui/icons/Person';
 import Button from "@material-ui/core/Button";
 import RedditIcon from '@material-ui/icons/Reddit';
 import EditLocationIcon from '@material-ui/icons/EditLocation';
@@ -175,6 +176,10 @@ const MiniDrawer = (props) => {
             <ListItem button key="Logout">
               <ListItemIcon><ExitToAppIcon onClick={onLogoutClick}/> </ListItemIcon>
               <ListItemText primary="Log Out" />
+            </ListItem>
+            <ListItem button key="Profile">
+              <ListItemIcon><Link to = "/profile" ><PersonIcon/></Link></ListItemIcon>
+              <ListItemText primary="Profile" />
             </ListItem>
         </List>
       </Drawer>
