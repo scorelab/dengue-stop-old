@@ -14,3 +14,10 @@
 8. Now MongoDB has been successfully connected and backend is running properly.
 
 
+# ADMIN PANEL : 
+1. This admin panel is made to monitor the reported cases of dengue using the Dengue Stop Community App.
+2. Admin can see the location from where the report has been made.
+3. Admin can see the count of reported cases in recent times.
+4. Basically this admin panel will help the authorities to take necessary steps in order make people safe from Dengue.
+5. This Dengue Stop Admin Panel can be extended to other diseases also.
+
