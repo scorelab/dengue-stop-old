@@ -207,9 +207,11 @@ const MiniDrawer = (props) => {
                 <Button variant="contained" color="secondary" startIcon = {<FireplaceIcon/>}>
                   HeatMaps
                 </Button>
-                <Button variant="contained" color="primary" startIcon = {<AssessmentIcon/>}>
-                  Analysis
-                </Button>
+                <Link to = "/table">
+                  <Button variant="contained" color="primary" startIcon = {<AssessmentIcon/>}>
+                    Analysis
+                  </Button>
+                </Link>
                 <Button variant="contained" color="secondary" startIcon = {<RedditIcon/>}>
                   Prediction
                 </Button>
