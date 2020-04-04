@@ -2,12 +2,47 @@ import React from 'react'
 import { View } from 'react-native'
 import { BarChart, Grid } from 'react-native-svg-charts'
 import { Text } from 'react-native-svg'
+import firebase from 'firebase'
+import '@firebase/firestore';
 
 export default class barChart extends React.PureComponent {
+    
+    state = {
+        reports: [],
+        data: []
+    }
+    
+    componentDidMount() {
+        reports = []
+        data = []
+        dates = []
+        const ref = firebase.firestore().collection('reports')
+        let allReports = ref.get().then(snapshot => {
+            snapshot.forEach(doc => {
+                reports.push(doc.data())
+                let date = new date(doc.data().timeStamp)
+                dates.push(date)
+            })
+            this.setState({ reports: reports })
+            console.log(this.state.reports)
+        })
+        let count = 0;
+        for (let i = 0; i < dates.length; i++) {
+            if (dates[i] == dates[i + 1]) {
+                count++;
+            }
+            else {
+                dates.push(count + 1)
+                count = 0
+            }
+        }
+        
+        this.setState({ data: dates.slice(0,5) })
+    }
 
     render() {
 
-        const data = [10, 5, 25, 15, 20]
+        const data = this.state.data
 
         const CUT_OFF = 20
         const Labels = ({ x, y, bandwidth, data }) => (
