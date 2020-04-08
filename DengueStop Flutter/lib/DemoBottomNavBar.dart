@@ -1,71 +1,70 @@
 import 'package:flutter/material.dart';
 
-void main()
-{
-  runApp(BottomNavBar());
+void main() {
+  runApp(MaterialApp(
+    title: 'Demo Bottom Navigation Bar',
+    home: Home(),
+  ));
 }
 
-class BottomNavBar extends StatefulWidget
-{
-  State<StatefulWidget> createState()
-  {
-    return BottomNavBarState();
-  }
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
 }
 
-class BottomNavBarState extends State<BottomNavBar>
-{
-  int selectedIndex = 0;
-  
-  void screenChanged(int index)
-  {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
-  
-  Widget build(BuildContext context)
-  {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Demo Bottom Nav Bar"),
-          centerTitle: true,
-          backgroundColor: Colors.blueGrey,
-        ),
-        backgroundColor: Colors.blueGrey[200],
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.blueGrey,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("Home"),
+class _HomeState extends State<Home> {
+  int appCurrIndex = 0;
+  List<Icon> iconsList = [
+    Icon(Icons.home),
+    Icon(Icons.group),
+    Icon(Icons.child_care),
+    Icon(Icons.info),
+    Icon(Icons.account_circle),
+  ];
+  List<Widget> bodyData = [
+    Center(
+      child: Text("Home"),
+    ),
+    Center(
+      child: Text("Groups"),
+    ),
+    Center(
+      child: Text("Volunteer"),
+    ),
+    Center(
+      child: Text("Information"),
+    ),
+    Center(
+      child: Text("Profile"),
+    ),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        bottomNavigationBar: Container(
+            margin: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: Colors.blue[900],
+              borderRadius: BorderRadius.circular(100.0),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.group),
-              title: Text("Group"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.child_care),
-              title: Text("Clean"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              title: Text("Info"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              title: Text("Profile"),
-            ),
-          ],
-          currentIndex: selectedIndex,
-          selectedItemColor: Colors.black,
-          onTap: screenChanged,
-          unselectedItemColor: Colors.blueGrey[800],
-        ),
-      ),
-    );
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: List<IconButton>.generate(5, (int i) {
+                  return IconButton(
+                    color: i == appCurrIndex ? Colors.white : Colors.white60,
+                    icon: iconsList[i],
+                    iconSize: 30.0,
+                    onPressed: () {
+                      setState(() {
+                        appCurrIndex = i;
+                      });
+                    },
+                  );
+                }))),
+        body: Container(
+          child: bodyData[appCurrIndex],
+        ));
   }
 }
-
