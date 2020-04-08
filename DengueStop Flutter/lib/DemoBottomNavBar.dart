@@ -1,3 +1,6 @@
+// design images can be found in the Design folder
+// this is yet to be mapped to the main.dart file
+
 import 'package:flutter/material.dart';
 
 void main() {
