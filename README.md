@@ -32,7 +32,9 @@ Dengue-Stop provides a simple and effective way to report and discover dengue in
 </tr>
 </table>
 
-
+# Original Version
+You can download a clean APK of the original app here.
+<a href="bit.ly/dengue-stop">Dengue-Stop</a>
 
 # License
 
