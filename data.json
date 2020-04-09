@@ -1,0 +1,23 @@
+{
+    "stats": {
+        "tot_cases" : "67,456",
+        "last_week" : "345",
+        "last_24hrs" : "23"
+    },
+    "reports": [
+        {
+            "name" : "Sumanapala",
+            "area" :  "Galle",
+            "lat" : 6.053519,
+            "lon" : 80.220978,
+            "info" : "This is Sample data"
+        },
+        {
+            "name" : "Dilhani",
+            "area" : "Kandy",
+            "lat" : 7.291418,
+            "lon" : 80.636696,
+            "info" : "This is Sample data 2"
+        }
+    ]
+}
