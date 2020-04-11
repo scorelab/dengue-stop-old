@@ -13,7 +13,7 @@ import RoomIcon from '@material-ui/icons/Room';
 import Button from "@material-ui/core/Button";
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
-import Location from "./Locations/Location"
+import Location from "../Locations/Location"
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -61,12 +61,12 @@ function createData(id, name, age, gender, disease, location, notification,lat,l
 
 const rows = [
     createData(1,'Anshika', 19, 'F', "Malaria", live, notify, 7.2906, 80.6337),
-    createData(2, "Abhay Katheria", 21, "M", "Dengue", live, nonotify, 6.9497, 80.7891),
+    createData(2, "Abhay Katheria", 21, "M", "HIV", live, nonotify, 6.9497, 80.7891),
     createData(3,"Chitransh", 20, "M", "Dengue", live, notify, 6.0535, 80.2210),
     createData(4, "Mithilesh", 22, "M", "Malaria", live, nonotify, 8.3114, 80.4037),
-    createData(5, "Mithilesh", 22, "M", "Malaria", live, notify),
-    createData(6, "Mithilesh", 22, "M", "Malaria", live, notify),
-    createData(7, "Mithilesh", 22, "M", "Malaria", live, notify),
+    createData(5, "Ajeet", 22, "M", "Corona", live, notify),
+    createData(6, "Gopal", 22, "M", "Corona", live, notify),
+    createData(7, "Shantanu", 22, "M", "HIV", live, notify),
 ];
 
 const useStyles = makeStyles({
@@ -81,7 +81,7 @@ const useStyles = makeStyles({
 export default function StickyHeadTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -95,7 +95,7 @@ export default function StickyHeadTable() {
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label="sticky table" size = 'small'>
           <TableHead>
             <TableRow>
               {columns.map(column => (
@@ -128,7 +128,7 @@ export default function StickyHeadTable() {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5,10, 25, 100]}
         component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}

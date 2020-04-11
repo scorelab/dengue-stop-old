@@ -207,7 +207,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AdvanceTable() {
+export default function FullEnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('age');

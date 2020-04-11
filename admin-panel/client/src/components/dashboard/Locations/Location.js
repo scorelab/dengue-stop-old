@@ -44,5 +44,5 @@ class Location extends Component {
   }
 
   export default GoogleApiWrapper({
-    apiKey: 'YOUR API KEY'
+    apiKey: 'AIzaSyD3ASbDz0MGMMYnJ7X4HXoegwuIL7pF4YQ'
   })(Location);

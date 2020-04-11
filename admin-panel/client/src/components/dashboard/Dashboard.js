@@ -16,6 +16,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -23,15 +27,29 @@ import { logoutUser } from "../../actions/authActions";
 import TimelineIcon from "@material-ui/icons/Timeline";
 import FireplaceIcon from '@material-ui/icons/Fireplace';
 import AssessmentIcon from '@material-ui/icons/Assessment';
-import PersonIcon from '@material-ui/icons/Person';
-import Button from "@material-ui/core/Button";
 import RedditIcon from '@material-ui/icons/Reddit';
+import PersonIcon from '@material-ui/icons/Person';
 import EditLocationIcon from '@material-ui/icons/EditLocation';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import EnhancedTable from "./Report"
+import EnhancedTable from "./Reports/Report"
+import Chart from "./Graph/RecentChart"
+import RecentReport from "./Reports/RecentReport"
 
 
 const drawerWidth = 240;
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -85,23 +103,40 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
+    padding: '0 8px',
     ...theme.mixins.toolbar,
   },
+  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  fixedHeight: {
+    height: 240,
   },
 }));
 
 const MiniDrawer = (props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const { user } = props.auth;
   const [open, setOpen] = React.useState(false);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   
 
-  const IconArray = [<TimelineIcon/>, <FireplaceIcon/>, <AssessmentIcon/>,<RedditIcon/>, <Link to = "/location"><EditLocationIcon/></Link>]
+  const IconArray = [<TimelineIcon/>, <FireplaceIcon/>, <AssessmentIcon/>,<RedditIcon/>, <EditLocationIcon/>]
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -116,13 +151,13 @@ const MiniDrawer = (props) => {
     setOpen(false);
   };
 
-  const { user } = props.auth;
+ const links = ['/chart','/heat','/table','/prediction','/location']
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position="absolute"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -164,11 +199,13 @@ const MiniDrawer = (props) => {
         </div>
         <Divider />
         <List>
-          {['Graph', 'HeatMap', 'Ananlysis', 'Prediction', <Link to = "/location">MAP VIEW</Link>].map((text, index) => (
+          {['Graph', 'HeatMap', 'Ananlysis', 'Prediction', 'MAP VIEW'].map((text, index) => (
+            <Link to = {links[index]} style = {{color:'black'}}>
             <ListItem button key={text}>
               <ListItemIcon>{IconArray[index] }</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />
@@ -177,52 +214,41 @@ const MiniDrawer = (props) => {
               <ListItemIcon><ExitToAppIcon onClick={onLogoutClick}/> </ListItemIcon>
               <ListItemText primary="Log Out" />
             </ListItem>
+            <Link to = "/profile" style = {{color:'black'}} >
             <ListItem button key="Profile">
-              <ListItemIcon><Link to = "/profile" ><PersonIcon/></Link></ListItemIcon>
+            <ListItemIcon><PersonIcon/></ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItem>
+            </Link>
         </List>
       </Drawer>
       <main className={classes.content}>
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h5>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
-            </h5>
-            <div > 
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-around"
-                }}
-              >
-              <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<TimelineIcon />}
-                >
-                  Graph
-                </Button>
-                <Button variant="contained" color="secondary" startIcon = {<FireplaceIcon/>}>
-                  HeatMaps
-                </Button>
-                <Link to = "/table">
-                  <Button variant="contained" color="primary" startIcon = {<AssessmentIcon/>}>
-                    Analysis
-                  </Button>
-                </Link>
-                <Button variant="contained" color="secondary" startIcon = {<RedditIcon/>}>
-                  Prediction
-                </Button>
-              </div>
-              <h4 id="title">Recent reported cases</h4>
-              <div style = {{width: "1000px"}}><EnhancedTable/></div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
+            {/* Chart */}
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+                <Chart />
+              </Paper>
+            </Grid>
+            {/* Recent Deposits */}
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <RecentReport />
+              </Paper>
+            </Grid>
+            {/* Recent Orders */}
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <EnhancedTable />
+              </Paper>
+            </Grid>
+          </Grid>
+          <Box pt={4}>
+            <Copyright />
+          </Box>
+        </Container>
       </main>
     </div>
   );
@@ -236,3 +262,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 export default connect(mapStateToProps, { logoutUser })(MiniDrawer);
+

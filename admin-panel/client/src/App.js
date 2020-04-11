@@ -13,7 +13,9 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Location from "./components/dashboard/Locations/Location"
 import UserProfile from "./components/dashboard/UserProfile/UserProfile"
-import AdvanceTable from "./components/dashboard/AdvanceTable"
+import FullEnhancedTable from "./components/dashboard/Reports/FullReport"
+import Chart from "./components/dashboard/Graph/Chart"
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -38,12 +40,13 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+            
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path = "/profile" component = {UserProfile} />
             <Route exact path = "/location" component = {Location} />
+            <Route exact path = "/profile" component = {UserProfile} />
+            <Route exact path = "/chart" component = {Chart} />
             <Route exact path = "/table" component = {FullEnhancedTable} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
