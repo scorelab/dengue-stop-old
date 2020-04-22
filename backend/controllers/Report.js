@@ -10,6 +10,8 @@ router.use(bodyparser.urlencoded({ extended: false }));
 router.use(bodyparser.json());
 
 const Report = require("../models/DengueReport");
+const FlowQuestion = require("../models/FlowQuestion");
+const FlowAnswer = require("../models/FlowAnswer");
 
 exports.Landing=(req,res)=>{
   res.send("<p>Report Page - Dengue Stop");
@@ -189,4 +191,55 @@ exports.deleteReport=(req,res)=>{
         res.json({status:"ERROR",message:"Not a valid report ID"});
     }
 
+}
+
+
+exports.addFlowQuestion=(req,res)=>{
+
+    let r={};
+    r.questions=JSON.parse(req.body.questions);
+    let newr=new FlowQuestion(r);
+    newr.save()
+    .then(
+        q=>{
+            if(q)
+            res.json({status:"SUCCESS",message:"Successfully added flow question"});
+            else
+            res.json({status:"SUCCESS",message:"Error adding flow question"});
+        }
+
+        
+    )
+    .catch(err=>res.json(err));
+}
+
+exports.getFlowQuestion=(req,res)=>{
+
+    FlowQuestion.find({})
+    .then(
+        q=>{
+            if(q)
+            res.json({status:"SUCCESS",Payload:q});
+            else
+            res.json({status:"SUCCESS",message:"Error getting flow question"});
+        }
+    )
+    .catch(err=>res.json(err));
+}
+exports.answerFlowQuestion=(req,res)=>{
+
+    let r={};
+    r.answer=JSON.parse(req.body.answer);
+    r.reportId=req.body.answer;
+    let newr=new FlowAnswer(r);
+    newr.save()
+    .then(
+        q=>{
+            if(q)
+            res.json({status:"SUCCESS",message:"Successfully added ans to flow question"});
+            else
+            res.json({status:"SUCCESS",message:"Error adding flow answer"});
+        }
+    )
+    .catch(err=>res.json(err));
 }

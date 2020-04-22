@@ -39,6 +39,11 @@ router.post("/updatestatus",reportController.updateReportStatus);
 router.get("/getreport/:rid",reportController.getParticularReport);
 
 
+router.post("/addflowques",reportController.addFlowQuestion);
+router.get("/getflowques",reportController.getFlowQuestion);
+router.post("/ansflowques",reportController.answerFlowQuestion);
+
+
 
 
 module.exports = router;
