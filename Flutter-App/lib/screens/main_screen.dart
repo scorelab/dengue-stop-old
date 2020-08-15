@@ -66,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
             color: Colors.white,
           ),
           Icon(
-            Icons.notifications,
+            Icons.local_hospital,
             size: 20,
             color: Colors.white,
           ),

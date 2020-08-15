@@ -1,11 +1,16 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dengue_stop/components/dialog_box.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:latlong/latlong.dart';
+import 'package:map_controller/map_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = "home";
@@ -15,31 +20,59 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  LatLng userLocation =  LatLng(7.8731, 80.7718);
+  var zoom =7.5;
+
+  DialogBox _dialogBox = DialogBox();
+
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
 
   List<Marker> allMarkers = [];
 
-  setMarkers() {
-    allMarkers.add(
-      Marker(
-        width: 45.0,
-        height: 45.0,
-        point: LatLng(5.9772833, 80.5087741),
-        builder: (context) => Container(
-          child: IconButton(
-            icon: Icon(Icons.location_on),
-            color: Colors.red,
-            iconSize: 45,
-            onPressed: () {
-              debugPrint("talp");
-            },
+  MapController mapController;
+
+  @override
+  void initState() {
+    // intialize the controllers
+    mapController = MapController();
+
+    super.initState();
+    getCurrentUser();
+
+  }
+
+
+
+
+  void _getCurrentLocation() async {
+    final position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(position);
+
+    setState(() {
+
+      userLocation =  LatLng(position.latitude, position.longitude);
+      zoom =12.0;
+      mapController.move(userLocation,zoom);
+
+      allMarkers.add(
+        Marker(
+          width: 45.0,
+          height: 45.0,
+          point: userLocation,
+          builder: (context) => Container(
+            child: IconButton(
+              icon: Icon(Icons.location_on),
+              color: Colors.lightGreenAccent,
+              iconSize: 45,
+              onPressed: () {},
+            ),
           ),
         ),
-      ),
-    );
-
-    return allMarkers;
+      );
+    });
   }
 
   void getCurrentUser() async {
@@ -51,11 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    getCurrentUser();
-  }
+
 
   Widget loadMap() {
     return StreamBuilder(
@@ -84,10 +113,12 @@ class _HomeScreenState extends State<HomeScreen> {
         }
 
         return new FlutterMap(
+          mapController: mapController,
           options: new MapOptions(
-            center: LatLng(7.8731, 80.7718),
+            center: userLocation,
 //            zoom: 8.0,
-            zoom: 7.5,
+            zoom: zoom,
+
           ),
           layers: [
             new TileLayerOptions(
@@ -129,31 +160,37 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         backgroundColor: Colors.blueAccent,
       ),
-      floatingActionButton:SpeedDial(
-      animatedIcon: AnimatedIcons.menu_close,
-
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
         children: [
-        SpeedDialChild(
-            child: Icon(Icons.person),
-            label: "Male",
-            labelBackgroundColor: Colors.purpleAccent,
-            backgroundColor: Colors.purpleAccent,
-            onTap: () => print("p1")
-//                  () {
-//              }
-        ),
-        SpeedDialChild(
-            child: Icon(Icons.person_outline),
-            labelBackgroundColor: Colors.orangeAccent,
-            backgroundColor: Colors.orangeAccent,
-            label: "Female",
-            onTap: () => print("p2")
-//                  () {
-//                addLocationToFierstore();
-//              }
-        ),
-      ],
-    ),
+          SpeedDialChild(
+              child: Icon(Icons.location_searching),
+              label: "my location",
+              labelBackgroundColor: Colors.greenAccent,
+              backgroundColor: Colors.lightGreenAccent,
+              onTap: () {
+                _getCurrentLocation();
+              }),
+          SpeedDialChild(
+              child: Icon(Icons.person),
+              label: "Male",
+              labelBackgroundColor: Colors.purpleAccent,
+              backgroundColor: Colors.purpleAccent,
+              onTap: () {
+                _dialogBox.information(context, 'Male patients',
+                    'Sorry, this is not yet implemented');
+              }),
+          SpeedDialChild(
+              child: Icon(Icons.person_outline),
+              labelBackgroundColor: Colors.orangeAccent,
+              backgroundColor: Colors.orangeAccent,
+              label: "Female",
+              onTap: () {
+                _dialogBox.information(context, 'Female patients',
+                    'Sorry, this is not yet implemented');
+              }),
+        ],
+      ),
       body: loadMap(),
     );
   }

@@ -51,28 +51,7 @@ class _ReportScreenState extends State<ReportScreen> {
             )),
         backgroundColor: Colors.blueAccent,
       ),
-      floatingActionButton: FabCircularMenu(children: <Widget>[
-        IconButton(
-            icon: Icon(Icons.local_hospital),
-            onPressed: () {
-              print('Health tips');
-            }),
-        IconButton(
-            icon: Icon(Icons.perm_media),
-            onPressed: () {
-              print('News');
-            }),
-        IconButton(
-            icon: Icon(Icons.fastfood),
-            onPressed: () {
-              print('Food and Nutrians');
-            }),
-        IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed: () {
-              print('Favorite');
-            })
-      ]),
+
     );
   }
 }
